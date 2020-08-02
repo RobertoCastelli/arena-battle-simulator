@@ -12,7 +12,7 @@ let playerStrength;
 // ----------------------
 let selectedEnemy;
 let enemyName;
-let enemyHealthd;
+let enemyHealth;
 let enemyMana;
 let enemyStrength;
 

@@ -6,9 +6,9 @@ const getPlayer = (classType) => {
   return selectedPlayer;
 };
 
-// ******************
-// GET SELECTED ENEMY
-// ------------------
+// *********
+// GET ENEMY
+// ---------
 const getEnemy = () => {
   selectedEnemy = mobs.map((mob) => mob);
 };
@@ -73,5 +73,8 @@ const playerAttack = () => {
 
 const attack = () => {
   const score = document.querySelector(".score");
-  score.innerHTML = `${playerName} hits for: ${playerAttack()}`;
+  let playerDamage = playerAttack();
+  score.innerHTML = `${playerName} hits for: ${playerDamage}`;
+  enemyHealth -= playerDamage;
+  console.log(enemyHealth);
 };
