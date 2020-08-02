@@ -3,15 +3,33 @@ body {
   margin: 0;
   padding: 0;
   font-family: monospace;
+  height: 100%;
+  width: 100%;
 }
 
-ul {
-  list-style: none;
-  display: flex;
+* {
+  box-sizing: border-box;
 }
 
-li {
-  margin: 1rem;
+button {
+  border: 1px solid white;
+  background-color: cadetblue;
+  color: white;
+  font-size: 1rem;
+  padding: 1rem;
+  width: 100px;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid cadetblue;
+  color: cadetblue;
+}
+
+.header,
+footer {
+  text-align: center;
 }
 
 .container {
@@ -19,12 +37,41 @@ li {
   flex-direction: column;
   min-height: 100vh;
   max-width: 700px;
+  margin: auto;
 }
 
 .content {
   flex-grow: 1;
 }
 
-.arena {
+.arena,
+.stats {
   visibility: hidden;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  gap: 1rem;
+}
+
+.stats div {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid cadetblue;
+}
+
+.champion-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  padding: 0;
+  margin: auto;
+}
+
+.champion-item {
+  border: 1px solid cadetblue;
+  margin: 1rem;
 }
