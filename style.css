@@ -1,5 +1,7 @@
 body {
   color: #333333;
+  background: url("./images/bgarena.jpg");
+  background-size: cover;
   margin: 0;
   padding: 0;
   font-family: monospace;
@@ -12,24 +14,30 @@ body {
 }
 
 button {
-  border: 1px solid white;
-  background-color: cadetblue;
+  border: 1px solid #e4e4e4;
+  background-color: #333333;
   color: white;
   font-size: 1rem;
   padding: 1rem;
   width: 100px;
+  outline: none;
 }
 
 button:hover {
   cursor: pointer;
   background-color: white;
-  border: 1px solid cadetblue;
-  color: cadetblue;
+  border: 1px solid #333333;
+  color: #333333;
 }
 
 .header,
-footer {
+footer,
+p {
   text-align: center;
+}
+
+footer {
+  color: #f4f4f4;
 }
 
 .container {
@@ -59,19 +67,22 @@ footer {
 .stats div {
   margin-top: 1rem;
   padding: 1rem;
-  border: 1px solid cadetblue;
+  border: 1px solid #333333;
+  background: url(./images/bgstats.jpg);
 }
 
 .champion-list {
   list-style: none;
   display: flex;
-  justify-content: center;
-  width: 200px;
-  padding: 0;
-  margin: auto;
+  flex-wrap: wrap;
 }
 
 .champion-item {
-  border: 1px solid cadetblue;
   margin: 1rem;
+  cursor: pointer;
+}
+
+.arena img {
+  width: 100%;
+  border: 1px solid #333333;
 }
