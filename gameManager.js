@@ -1,31 +1,19 @@
-// ************
-// RESTART GAME
-//-------------
-const resetGame = () => window.location.reload();
+let selectedPlayer;
 
-// ***********
-// FIGHT SCENE
-// -----------
-const attack = () => {
-  // **** TODO *****
-  const score = document.querySelector(".score");
-  score.innerHTML = "You attack the monster";
-};
-
-// **************************
-// CALLS Fn TO START THE GAME
-// --------------------------
+// *********************************************
+// CALLS Fn TO START THE GAME AFTER CHAMP SELECT
+// ---------------------------------------------
 const setGameStart = (classType) => {
   setPlayer(classType);
   setFight();
 };
 
 // ******************************
-// SETS SELECTED PLAYER ON SCREEN
+// SETS SELECTED PLAYER IN THE ARENA
 // ------------------------------
 const setPlayer = (classType) => {
   const getPlayerStats = document.querySelector(".player-stats");
-  let selectedPlayer = players.filter((mob) => mob.classe === classType);
+  getPlayer(classType);
   let player = selectedPlayer.map((player) => {
     return `
         <img class="player-img" src="${player.src}"></img>
@@ -39,8 +27,27 @@ const setPlayer = (classType) => {
   getPlayerStats.innerHTML = `${player}`;
 };
 
+// *************************
+// SETS THE ARENA FOR BATTLE
+//--------------------------
+const setFight = () => {
+  const championList = document.querySelector(".champion-list");
+  const getHeaderActions = document.querySelector(".header-action");
+  const arena = document.querySelector(".arena");
+  const stats = document.querySelector(".stats");
+
+  arena.style.visibility = "visible";
+  stats.style.visibility = "visible";
+  championList.innerHTML = "";
+  getHeaderActions.innerHTML = `
+  <p>Get ready!</p>
+  <button onclick="setEnemy()">start</button>
+  <button onclick="resetGame()">reset</button>
+  `;
+};
+
 // ******************************
-// SETS ENEMEY ON SCREEN
+// SETS ENEMEY IN THE ARENA
 // ------------------------------
 const setEnemy = () => {
   const getEnemyStats = document.querySelector(".enemy-stats");
@@ -60,25 +67,6 @@ const setEnemy = () => {
   getHeaderActions.innerHTML = `
   <p>Choose your move!</p>
   <button onclick="attack()">attack</button>
-  <button onclick="resetGame()">reset</button>
-  `;
-};
-
-// *************************
-// SETS THE ARENA FOR BATTLE
-//--------------------------
-const setFight = () => {
-  const championList = document.querySelector(".champion-list");
-  const getHeaderActions = document.querySelector(".header-action");
-  const arena = document.querySelector(".arena");
-  const stats = document.querySelector(".stats");
-
-  arena.style.visibility = "visible";
-  stats.style.visibility = "visible";
-  championList.innerHTML = "";
-  getHeaderActions.innerHTML = `
-  <p>Get ready!</p>
-  <button onclick="setEnemy()">start</button>
   <button onclick="resetGame()">reset</button>
   `;
 };
