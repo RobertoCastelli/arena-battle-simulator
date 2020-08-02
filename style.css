@@ -68,11 +68,27 @@ footer {
   gap: 1rem;
 }
 
-.stats div {
+.stats .score,
+.stats .player-stats,
+.stats .enemy-stats {
+  position: relative;
   margin-top: 0.5rem;
   padding: 1rem;
   border: 1px solid #333333;
   background: url(./images/bgstats.jpg);
+}
+
+.player-avatar {
+  position: absolute;
+  width: 150px;
+  top: -250px;
+  left: 30px;
+}
+
+.enemy-avatar {
+  position: absolute;
+  top: -250px;
+  left: -30px;
 }
 
 .champion-list {
