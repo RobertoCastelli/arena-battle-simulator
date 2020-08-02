@@ -7,6 +7,7 @@ const players = [
     strength: 100,
   },
   {
+    src: "./images/shen.jpg",
     name: "Shen",
     classe: "ninja",
     health: 60,
@@ -17,6 +18,7 @@ const players = [
 
 const mobs = [
   {
+    src: "./images/gurgaz.jpg",
     name: "Gurgaz",
     classe: "goblin",
     health: 100,

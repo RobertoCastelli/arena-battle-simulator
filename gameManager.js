@@ -19,6 +19,7 @@ const setPlayer = (classType) => {
   let selectedPlayer = players.filter((mob) => mob.classe === classType);
   let player = selectedPlayer.map((player) => {
     return `
+        <img class="player-img" src="${player.src}"></img>
         <h3>${player.name}</h3>
         <p>HP: ${player.health}</p>
         <p>MP: ${player.mana}</p>
@@ -36,6 +37,7 @@ const setEnemy = () => {
   let selectedEnemy = mobs.map((mob) => mob);
   let enemy = selectedEnemy.map((enemy) => {
     return `
+        <img class="enemy-img" src="${enemy.src}"></img>
         <h3>${enemy.name}</h3>
         <p>HP: ${enemy.health}</p>
         <p>MP: ${enemy.mana}</p>
@@ -58,8 +60,8 @@ const setFight = () => {
   stats.style.visibility = "visible";
   championList.innerHTML = "";
   getHeaderActions.innerHTML = `
-  <p>Get ready!</p>
   <button onclick="setEnemy()">start</button>
   <button onclick="resetGame()">reset</button>
+  <p>Get ready!</p>
   `;
 };

@@ -36,6 +36,10 @@ p {
   text-align: center;
 }
 
+h1,
+.header-action {
+  text-shadow: 1px 2px 6px white;
+}
 footer {
   color: #f4f4f4;
 }
@@ -65,7 +69,7 @@ footer {
 }
 
 .stats div {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   padding: 1rem;
   border: 1px solid #333333;
   background: url(./images/bgstats.jpg);
@@ -78,11 +82,39 @@ footer {
 }
 
 .champion-item {
+  position: relative;
   margin: 1rem;
   cursor: pointer;
+}
+
+.champion-name {
+  position: absolute;
+  top: 75%;
+  left: 25%;
+  text-align: center;
+  background-color: #f4f4f4;
+  transform: rotate(-10deg);
+}
+
+.champion-item img {
+  width: 100px;
+  border-radius: 1rem;
+  border: 1px solid #333333;
+  opacity: 0.5;
+}
+
+.champion-item img:hover {
+  opacity: 1;
+  transition: 0.5s ease;
+  transform: scale(1.1);
 }
 
 .arena img {
   width: 100%;
   border: 1px solid #333333;
+}
+
+.enemy-img,
+.player-img {
+  width: 100px;
 }
