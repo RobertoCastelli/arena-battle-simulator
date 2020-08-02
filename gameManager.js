@@ -1,41 +1,47 @@
+// **********************
+// PLAYER GLOBAL VARIABLES
+// ----------------------
 let selectedPlayer;
+let playerName;
+let playerHealth;
+let playerMana;
+let playerStrength;
 
-// *********************************************
-// CALLS Fn TO START THE GAME AFTER CHAMP SELECT
-// ---------------------------------------------
-const setGameStart = (classType) => {
-  setPlayer(classType);
-  setFight();
-};
+// **********************
+// ENEMY GLOBAL VARIABLES
+// ----------------------
+let selectedEnemy;
+let enemyName;
+let enemyHealthd;
+let enemyMana;
+let enemyStrength;
 
 // ******************************
-// SETS SELECTED PLAYER IN THE ARENA
+// SET UP GAME AFTER CHAMP SELECT
 // ------------------------------
+const setGameStart = (classType) => {
+  setPlayer(classType);
+  setArena();
+};
+
+// *********************************
+// SETS SELECTED PLAYER IN THE ARENA
+// ---------------------------------
 const setPlayer = (classType) => {
   const getPlayerStats = document.querySelector(".player-stats");
   getPlayer(classType);
-  let player = selectedPlayer.map((player) => {
-    return `
-        <img class="player-img" src="${player.src}"></img>
-        <img class="player-avatar" src="${player.avatar}"></img>
-        <h3>${player.name}</h3>
-        <p>HP: ${player.health}</p>
-        <p>MP: ${player.mana}</p>
-        <p>STR: ${player.strength}</p>
-        `;
-  });
+  setPlayerTemplate();
   getPlayerStats.innerHTML = `${player}`;
 };
 
 // *************************
 // SETS THE ARENA FOR BATTLE
 //--------------------------
-const setFight = () => {
+const setArena = () => {
   const championList = document.querySelector(".champion-list");
   const getHeaderActions = document.querySelector(".header-action");
   const arena = document.querySelector(".arena");
   const stats = document.querySelector(".stats");
-
   arena.style.visibility = "visible";
   stats.style.visibility = "visible";
   championList.innerHTML = "";
@@ -46,23 +52,14 @@ const setFight = () => {
   `;
 };
 
-// ******************************
+// ************************
 // SETS ENEMEY IN THE ARENA
-// ------------------------------
+// ------------------------
 const setEnemy = () => {
   const getEnemyStats = document.querySelector(".enemy-stats");
   const getHeaderActions = document.querySelector(".header-action");
-  let selectedEnemy = mobs.map((mob) => mob);
-  let enemy = selectedEnemy.map((enemy) => {
-    return `
-        <img class="enemy-img" src="${enemy.src}"></img>
-        <img class="enemy-avatar" src="${enemy.avatar}"></img>
-        <h3>${enemy.name}</h3>
-        <p>HP: ${enemy.health}</p>
-        <p>MP: ${enemy.mana}</p>
-        <p>STR: ${enemy.strength}</p>
-        `;
-  });
+  getEnemy();
+  setEnemyTemplate();
   getEnemyStats.innerHTML = `${enemy}`;
   getHeaderActions.innerHTML = `
   <p>Choose your move!</p>
