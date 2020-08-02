@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css" />
+
+    <title>ABS</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Arena Battle Simulator</h1>
+        <h3 class="header-action">Choose your Champion</h3>
+      </div>
+      <div class="content">
+        <ul class="champion-list">
+          <li onclick="setGameStart('warewolf')" class="champion-item">
+            warewolf
+          </li>
+          <li onclick="setGameStart('ninja')" class="champion-item">ninja</li>
+        </ul>
+        <div class="arena">
+          <img src="https://via.placeholder.com/700x500" alt="arena" />
+        </div>
+        <div class="stats">
+          <div class="player-stats">P STATS</div>
+          <div class="score">SCORE</div>
+          <div class="enemy-stats">E STATS</div>
+        </div>
+      </div>
+      <footer>
+        <p>copyright &copy; 2020 Roberto Castelli</p>
+        <p>robertocastelli.dev</p>
+      </footer>
+    </div>
+    <script src="data.js"></script>
+    <script src="gameManager.js"></script>
+  </body>
+</html>

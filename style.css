@@ -1,0 +1,30 @@
+body {
+  color: #333333;
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+}
+
+li {
+  margin: 1rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 700px;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+.arena {
+  visibility: hidden;
+}
