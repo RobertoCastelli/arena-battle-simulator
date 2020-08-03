@@ -14,7 +14,7 @@ const setArena = () => {
   championList.innerHTML = "";
   // DISPLAY ARENA AND STATS
   arena.style.visibility = "visible";
-  stats.style.visibility = "visible";
+  getStats.style.visibility = "visible";
   // ADD START AND RESET BUTTONS
   getHeaderActions.innerHTML = `
   <p>Get ready!</p>

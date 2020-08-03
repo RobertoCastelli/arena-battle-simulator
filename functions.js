@@ -47,11 +47,6 @@ const setPlayerTemplate = () => {
   getPlayerStats.innerHTML = `${playerNew}`;
 };
 
-// ****************
-// DICE ROLL RANDOM
-// ----------------
-const diceRoll = (power) => Math.floor(Math.random() * power);
-
 // ************
 // RESTART GAME
 //-------------
@@ -60,14 +55,48 @@ const resetGame = () => window.location.reload();
 // ***********
 // FIGHT SCENE
 // -----------
-
 // CHECK SPEED -> WHO ATTACKS FIRST
 // ATTACK SEQUENCE Att/Def -> Def/Att -> CHECK DEATH
 // CHECK ENERGY -> WHO ATTACKS
 // ATTACK SEQUENCE Att/Def -> Def/Att -> CHECK DEAT
 
-const attack = () => {
+// ****************
+// DICE ROLL RANDOM
+// ----------------
+const diceRoll = (power) => Math.floor(Math.random() * power);
+
+// ***********
+// CHECK DEATH
+// -----------
+const checkDeath = (champion) => {
+  if (champion[0].health <= 0) champion[0].health = 0;
+};
+
+// **********************
+// PLAYER ATTACK SEQUENCE
+// ----------------------
+const playerAttack = () => {
   let playerDamage = diceRoll(selectedPlayer[0].strength);
+  getScore.innerHTML = `${selectedPlayer[0].name} hits for: ${playerDamage}`;
   selectedEnemy[0].health -= playerDamage;
+  checkDeath(selectedEnemy);
   setEnemyTemplate();
+};
+
+// *********************
+// ENEMY ATTACK SEQUENCE
+//---------------------
+const enemyAttack = () => {
+  let enemyDamage = diceRoll(selectedEnemy[0].strength);
+  getScore.innerHTML = `${selectedEnemy[0].name} hits for: ${enemyDamage}`;
+  selectedPlayer[0].health -= enemyDamage;
+  checkDeath(selectedPlayer);
+  setPlayerTemplate();
+};
+
+const attack = () => {
+  playerAttack();
+  setTimeout(() => {
+    enemyAttack();
+  }, 2 * 1000);
 };

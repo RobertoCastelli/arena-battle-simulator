@@ -4,8 +4,8 @@
 let getHeaderActions = document.querySelector(".header-action");
 let championList = document.querySelector(".champion-list");
 let arena = document.querySelector(".arena");
-let stats = document.querySelector(".stats");
-let score = document.querySelector(".score");
+let getStats = document.querySelector(".stats");
+let getScore = document.querySelector(".score");
 
 // **************
 // GETTERS PLAYER
