@@ -1,6 +1,6 @@
 const players = [
   {
-    src: "./images/ww.jpg",
+    icon: "./images/ww.jpg",
     avatar: "./images/wolf.gif",
     name: "Warwick",
     classe: "warewolf",
@@ -9,7 +9,7 @@ const players = [
     strength: 100,
   },
   {
-    src: "./images/shen.jpg",
+    icon: "./images/shen.jpg",
     avatar: "./images/ninja.gif",
     name: "Shen",
     classe: "ninja",
@@ -21,7 +21,7 @@ const players = [
 
 const mobs = [
   {
-    src: "./images/gurgaz.png",
+    icon: "./images/gurgaz.png",
     avatar: "./images/monster.gif",
     name: "Gurgaz",
     classe: "goblin",

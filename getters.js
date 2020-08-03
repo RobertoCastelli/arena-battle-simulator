@@ -1,0 +1,28 @@
+// ************
+// GETTERS GAME
+// ------------
+let getHeaderActions = document.querySelector(".header-action");
+let championList = document.querySelector(".champion-list");
+let arena = document.querySelector(".arena");
+let stats = document.querySelector(".stats");
+let score = document.querySelector(".score");
+
+// **************
+// GETTERS PLAYER
+// --------------
+let getPlayerStats = document.querySelector(".player-stats");
+let getPlayerHealth = document.querySelector(".player-health");
+let getPlayerIcon = document.querySelector(".player-icon");
+let getPlayerName = document.querySelector(".player-name");
+let getPlayerMana = document.querySelector(".player-mana");
+let getPlayerStrength = document.querySelector(".playertr-strength");
+
+// *************
+// GETTERS ENEMY
+// -------------
+let getEnemyStats = document.querySelector(".enemy-stats");
+let getEnemyIcon = document.querySelector(".enemy-icon");
+let getEnemyName = document.querySelector(".enemy-name");
+let getEnemyHealth = document.querySelector(".enemy-health");
+let getEnemyMana = document.querySelector(".enemy-mana");
+let getEnemyStrength = document.querySelector(".enemy-strength");

@@ -17,40 +17,34 @@ const getEnemy = () => {
 // DISPLAY SELECTED ENEMY STATS
 // -----------------------------
 const setEnemyTemplate = () => {
-  enemy = selectedEnemy.map((enemy) => {
-    enemyName = enemy.name;
-    enemyHealth = enemy.health;
-    enemyMana = enemy.mana;
-    enemyStrength = enemy.strength;
+  enemyNew = selectedEnemy.map((enemy) => {
     return `
-        <img class="enemy-img" src="${enemy.src}"></img>
-        <img class="enemy-avatar" src="${enemy.avatar}"></img>
-        <h3>${enemyName}</h3>
-        <p>HP: ${enemyHealth}</p>
-        <p>MP: ${enemyMana}</p>
-        <p>STR: ${enemyStrength}</p>
-        `;
+           <img class="enemy-icon" src="${enemy.icon}"></img>
+           <img class="enemy-avatar" src="${enemy.avatar}"></img>
+          <h2>${enemy.name}</h2>
+           <p>HP: ${enemy.health}</p>
+           <p>MP: ${enemy.mana}</p>
+           <p>STR: ${enemy.strength}</p>
+           `;
   });
+  getEnemyStats.innerHTML = `${enemyNew}`;
 };
 
 // *****************************
 // DISPLAY SELECTED PLAYER STATS
 // -----------------------------
 const setPlayerTemplate = () => {
-  player = selectedPlayer.map((player) => {
-    playerName = player.name;
-    playerHealth = player.health;
-    playerMana = player.mana;
-    playerStrength = player.strength;
+  playerNew = selectedPlayer.map((player) => {
     return `
-        <img class="player-img" src="${player.src}"></img>
-        <img class="player-avatar" src="${player.avatar}"></img>
-        <h3>${playerName}</h3>
-        <p>HP: ${playerHealth}</p>
-        <p>MP: ${playerMana}</p>
-        <p>STR: ${playerStrength}</p>
-        `;
+    <img class="player-icon" src="${player.icon}"></img>
+    <img class="player-avatar" src="${player.avatar}"></img>
+    <h3>${player.name}</h3>
+    <p class="player-health">HP: ${player.health}</p>
+    <p>MP: ${player.mana}</p>
+    <p>STR: ${player.strength}</p>
+    `;
   });
+  getPlayerStats.innerHTML = `${playerNew}`;
 };
 
 // ****************
@@ -66,15 +60,14 @@ const resetGame = () => window.location.reload();
 // ***********
 // FIGHT SCENE
 // -----------
-const playerAttack = () => {
-  let playerAttack = diceRoll(playerStrength);
-  return playerAttack;
-};
+
+// CHECK SPEED -> WHO ATTACKS FIRST
+// ATTACK SEQUENCE Att/Def -> Def/Att -> CHECK DEATH
+// CHECK ENERGY -> WHO ATTACKS
+// ATTACK SEQUENCE Att/Def -> Def/Att -> CHECK DEAT
 
 const attack = () => {
-  const score = document.querySelector(".score");
-  let playerDamage = playerAttack();
-  score.innerHTML = `${playerName} hits for: ${playerDamage}`;
-  enemyHealth -= playerDamage;
-  console.log(enemyHealth);
+  let playerDamage = diceRoll(selectedPlayer[0].strength);
+  selectedEnemy[0].health -= playerDamage;
+  setEnemyTemplate();
 };

@@ -30,9 +30,32 @@
           <img src="./images/arena.png" alt="arena" />
         </div>
         <div class="stats">
-          <div class="player-stats"></div>
-          <div class="score"></div>
-          <div class="enemy-stats"></div>
+          <div class="player-stats">
+            <img
+              class="player-icon"
+              src="https:/via.placeholder.com/100"
+              alt="player-avatar"
+            />
+            <p class="player-name"></p>
+            <p class="player-health"></p>
+            <p class="player-mana"></p>
+            <p class="player-strength"></p>
+          </div>
+          <div class="score-wrapper">
+            <h3 class="score-header">COMBAT LOGS</h3>
+            <div class="score"></div>
+          </div>
+          <div class="enemy-stats">
+            <img
+              class="enemy-icon"
+              src="./images/ignoto.jpg"
+              alt="player-avatar"
+            />
+            <p class="enemy-name"></p>
+            <p class="enemy-health"></p>
+            <p class="enemy-mana"></p>
+            <p class="enemy-strength"></p>
+          </div>
         </div>
       </div>
 
@@ -42,6 +65,7 @@
       </footer>
     </div>
     <script src="data.js"></script>
+    <script src="getters.js"></script>
     <script src="functions.js"></script>
     <script src="gameManager.js"></script>
   </body>

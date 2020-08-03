@@ -68,9 +68,10 @@ footer {
   gap: 1rem;
 }
 
-.stats .score,
+.stats .score-wrapper,
 .stats .player-stats,
 .stats .enemy-stats {
+  text-align: center;
   position: relative;
   margin-top: 0.5rem;
   padding: 1rem;
@@ -83,6 +84,12 @@ footer {
   width: 150px;
   top: -250px;
   left: 30px;
+}
+
+.enemy-icon,
+.player-icon {
+  width: 100px;
+  border-radius: 1rem;
 }
 
 .enemy-avatar {
@@ -128,9 +135,4 @@ footer {
 .arena img {
   width: 100%;
   border: 1px solid #333333;
-}
-
-.enemy-img,
-.player-img {
-  width: 100px;
 }
