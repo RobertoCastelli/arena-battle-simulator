@@ -32,18 +32,15 @@ const enemyAttack = () => {
   selectedPlayer[0].health -= enemyDamage;
 };
 
-// *************************
+// **************
 // DEATH SEQUENCE
-
-// CHECK HEALTH NOT NEGATIVE
-// INJECT R.I.P. ICON
-// START NEXT ENEMY ROUND
-// -------------------------
+// --------------
 const checkDeath = (champion) => {
   if (champion[0].health <= 0) {
     champion[0].health = 0;
     champion[0].icon = "./images/rip.png";
     champion[0].status = "dead";
+    champion[0].avatar = "";
     setDelay(2000).then(() => setArena());
   }
 };

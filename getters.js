@@ -1,13 +1,15 @@
 // ************
 // GETTERS GAME
 // ------------
-let getHeaderActions = document.querySelector(".header-action");
+let getArena = document.querySelector(".arena");
 let championList = document.querySelector(".champion-list");
-let arena = document.querySelector(".arena");
 let getStats = document.querySelector(".stats");
 let getEnemyScore = document.querySelector(".enemy-score");
 let getPlayerScore = document.querySelector(".player-score");
 let getScoreResult = document.querySelector(".score-result");
+let getHeaderActions = document.querySelector(".header-action");
+let getScoreResultHeader = document.querySelector(".score-result-header");
+let getScoreHeader = document.querySelector(".score-header");
 
 // **************
 // GETTERS PLAYER

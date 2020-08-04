@@ -13,8 +13,12 @@ const setArena = () => {
   // REMOVE SELECT CHAMPION LIST
   championList.innerHTML = "";
   // DISPLAY ARENA AND STATS
-  arena.style.visibility = "visible";
+  getArena.style.visibility = "visible";
   getStats.style.visibility = "visible";
+  // DISPLAY ARENA HEADERS
+  getScoreResult.innerHTML = "start fighting!";
+  getScoreResultHeader.innerHTML = "ARENA SPEAKER";
+  getScoreHeader.innerHTML = "COMBAT LOGS";
   // ADD START AND RESET BUTTONS
   getHeaderActions.innerHTML = `
   <p>Get ready!</p>
