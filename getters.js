@@ -5,7 +5,9 @@ let getHeaderActions = document.querySelector(".header-action");
 let championList = document.querySelector(".champion-list");
 let arena = document.querySelector(".arena");
 let getStats = document.querySelector(".stats");
-let getScore = document.querySelector(".score");
+let getEnemyScore = document.querySelector(".enemy-score");
+let getPlayerScore = document.querySelector(".player-score");
+let getScoreResult = document.querySelector(".score-result");
 
 // **************
 // GETTERS PLAYER

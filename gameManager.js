@@ -28,16 +28,15 @@ const setArena = () => {
 // ---------------------------------
 const setPlayer = (classType) => {
   getPlayer(classType);
-  setPlayerTemplate();
+  setPlayerStats();
 };
 
 // ************************
 // SETS ENEMEY IN THE ARENA
 // ------------------------
 const setEnemy = () => {
-  const getHeaderActions = document.querySelector(".header-action");
   getEnemy();
-  setEnemyTemplate();
+  setEnemyStats();
   getHeaderActions.innerHTML = `
   <p>Choose your move!</p>
   <button onclick="attack()">attack</button>
