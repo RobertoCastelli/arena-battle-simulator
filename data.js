@@ -1,7 +1,7 @@
 const players = [
   {
-    icon: "./images/ww.jpg",
-    avatar: "./images/wolf.gif",
+    icon: "./images/players/ww.jpg",
+    avatar: "./images/players/wolf.gif",
     name: "Warwick",
     classe: "warewolf",
     health: 100,
@@ -9,8 +9,8 @@ const players = [
     strength: 100,
   },
   {
-    icon: "./images/shen.jpg",
-    avatar: "./images/ninja.gif",
+    icon: "./images/players/shen.jpg",
+    avatar: "./images/players/ninja.gif",
     name: "Shen",
     classe: "ninja",
     health: 60,
@@ -21,8 +21,8 @@ const players = [
 
 const mobs = [
   {
-    icon: "./images/gurgaz.png",
-    avatar: "./images/monster.gif",
+    icon: "./images/mobs/gurgaz.jpg",
+    avatar: "./images/mobs/monster.gif",
     name: "Gurgaz",
     classe: "goblin",
     health: 100,
@@ -31,8 +31,8 @@ const mobs = [
     status: "alive",
   },
   {
-    icon: "./images/gurgaz.png",
-    avatar: "./images/monster.gif",
+    icon: "./images/mobs/skeletor.jpg",
+    avatar: "./images/mobs/monster.gif",
     name: "Skeletor",
     classe: "undead",
     health: 80,
@@ -42,8 +42,8 @@ const mobs = [
   },
   ,
   {
-    icon: "./images/gurgaz.png",
-    avatar: "./images/monster.gif",
+    icon: "./images/mobs/mordekaiser.jpg",
+    avatar: "./images/mobs/monster.gif",
     name: "Mordekaiser",
     classe: "phantom",
     health: 80,

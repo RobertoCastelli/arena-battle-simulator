@@ -44,7 +44,7 @@ const checkDeath = (champion) => {
     champion[0].icon = "./images/rip.png";
     champion[0].status = "dead";
     champion[0].avatar = "";
-    setDelay(2000).then(() => setArena());
+    setDelay(2500).then(() => setArena());
   }
 };
 

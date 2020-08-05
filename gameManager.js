@@ -23,7 +23,7 @@ const setArena = () => {
   getHeaderActions.innerHTML = `
   <p>Get ready!</p>
   <button onclick="setEnemy()">start</button>
-  <button onclick="restartGame()">reset</button>
+  <button onclick="restartGame()">restart</button>
   `;
 };
 
@@ -39,12 +39,12 @@ const setPlayer = (classType) => {
 // SETS ENEMEY IN THE ARENA
 // ------------------------
 const setEnemy = () => {
-  audioFight.play();
+  // audioFight.play();
   getEnemy();
   setEnemyStats();
   getHeaderActions.innerHTML = `
   <p>Choose your move!</p>
   <button onclick="attack()">attack</button>
-  <button onclick="resetGame()">reset</button>
+  <button onclick="restartGame()">restart</button>
   `;
 };
