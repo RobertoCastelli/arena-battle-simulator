@@ -10,6 +10,7 @@ let getScoreResult = document.querySelector(".score-result");
 let getHeaderActions = document.querySelector(".header-action");
 let getScoreResultHeader = document.querySelector(".score-result-header");
 let getScoreHeader = document.querySelector(".score-header");
+let audioFight = document.querySelector(".audio-fight");
 
 // **************
 // GETTERS PLAYER

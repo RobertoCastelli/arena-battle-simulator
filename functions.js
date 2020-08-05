@@ -1,7 +1,7 @@
 // ************
 // RESTART GAME
 //-------------
-const resetGame = () => window.location.reload();
+const restartGame = () => window.location.reload();
 
 // *********
 // DICE ROLL
@@ -13,6 +13,14 @@ const diceRoll = (power) => Math.floor(Math.random() * power);
 // -----------
 const setDelay = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+// ********************
+// STOP AND RESET AUDIO
+// --------------------
+const resetAudio = () => {
+  audioFight.pause();
+  audioFight.currentTime = 0;
 };
 
 // ****************************

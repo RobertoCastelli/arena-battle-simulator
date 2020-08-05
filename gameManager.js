@@ -23,7 +23,7 @@ const setArena = () => {
   getHeaderActions.innerHTML = `
   <p>Get ready!</p>
   <button onclick="setEnemy()">start</button>
-  <button onclick="resetGame()">reset</button>
+  <button onclick="restartGame()">reset</button>
   `;
 };
 
@@ -39,6 +39,7 @@ const setPlayer = (classType) => {
 // SETS ENEMEY IN THE ARENA
 // ------------------------
 const setEnemy = () => {
+  audioFight.play();
   getEnemy();
   setEnemyStats();
   getHeaderActions.innerHTML = `

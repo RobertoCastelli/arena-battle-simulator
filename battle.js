@@ -6,12 +6,14 @@ const attack = () => {
   playerAttack();
   checkDeath(selectedEnemy);
   setEnemyStats();
-  setDelay(2000).then(() => {
-    enemyAttack();
-    checkDeath(selectedPlayer);
-    setPlayerStats();
-    checkVictory();
-  });
+  selectedEnemy[0].status !== "dead" &&
+    setDelay(2000).then(() => {
+      enemyAttack();
+      checkDeath(selectedPlayer);
+      setPlayerStats();
+      checkVictory();
+    });
+  checkVictory();
 };
 
 // **********************
@@ -37,6 +39,7 @@ const enemyAttack = () => {
 // --------------
 const checkDeath = (champion) => {
   if (champion[0].health <= 0) {
+    resetAudio();
     champion[0].health = 0;
     champion[0].icon = "./images/rip.png";
     champion[0].status = "dead";
