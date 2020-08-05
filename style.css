@@ -89,7 +89,7 @@ footer {
 .enemy-icon,
 .player-icon {
   width: 100px;
-  border-radius: 1rem;
+  border-radius: 3rem;
 }
 
 .enemy-avatar {
@@ -121,7 +121,7 @@ footer {
 
 .champion-item img {
   width: 100px;
-  border-radius: 1rem;
+  border-radius: 3rem;
   border: 1px solid #333333;
   opacity: 0.5;
 }
@@ -144,6 +144,36 @@ footer {
 }
 .score-content {
   flex-grow: 1;
+}
+
+progress {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 0.8rem;
+  text-align: center;
+  position: relative;
+}
+
+progress:before {
+  content: attr(data-lable);
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+  color: white;
+}
+
+.player-health::-webkit-progress-value,
+.enemy-health::-webkit-progress-value {
+  background: brown;
+}
+.player-mana::-webkit-progress-value,
+.enemy-mana::-webkit-progress-value {
+  background: orange;
+}
+.player-strength::-webkit-progress-value,
+.enemy-strength::-webkit-progress-value {
+  background: cadetblue;
 }
 
 .shake {

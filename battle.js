@@ -52,9 +52,7 @@ const checkDeath = (champion) => {
 // CHECK VICOTRY STATUS
 // --------------------
 const checkVictory = () => {
-  if (selectedPlayer[0].health <= 0 && selectedEnemy[0].health <= 0) {
-    getScoreResult.innerHTML = `You both Die!`;
-  } else if (selectedPlayer[0].health <= 0 && selectedEnemy[0].health > 0) {
+  if (selectedPlayer[0].health <= 0 && selectedEnemy[0].health > 0) {
     getScoreResult.innerHTML = `${selectedEnemy[0].name} slays ${selectedPlayer[0].name}, You Lose!`;
   } else if (selectedEnemy[0].health <= 0 && selectedPlayer[0].health > 0) {
     getScoreResult.innerHTML = `${selectedPlayer[0].name} slays ${selectedEnemy[0].name}, You Win!`;
