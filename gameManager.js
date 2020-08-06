@@ -1,14 +1,39 @@
-// ****************************
-// GET SELECTED PLAYER AT START
-// ----------------------------
+// ********************************
+// GENERATE CHAMPION LIST FROM DATA
+// --------------------------------
+const playersList = () => {
+  players.forEach((player) => {
+    const playersItem = `
+    <li onclick="setGameStart('${player.classe}')" class="champion-item">
+    <img src="${player.icon}" alt="avatar" />
+    <h3 class="champion-name">${player.name}</h3>
+    </li>
+    `;
+    let position = "beforeend";
+    championList.insertAdjacentHTML(position, playersItem);
+  });
+};
+playersList();
+
+// *****************************
+// GET PLAYER FROM LIST AT START
+// -----------------------------
 const getPlayer = (classType) => {
-  selectedPlayer = players.filter((mob) => mob.classe === classType);
+  selectedPlayer = players.filter((player) => player.classe === classType);
   return selectedPlayer;
 };
 
-// ******************
-// GET ENEMY IF ALIVE
-// ------------------
+// ***********
+// SET UP GAME
+// -----------
+const setGameStart = (classType) => {
+  setPlayer(classType);
+  setArena();
+};
+
+// ****************************
+// GET ENEMY FROM LIST IF ALIVE
+// ----------------------------
 const getEnemy = () => {
   getAliveEnemy = mobs.filter((mob) => mob.status === "alive");
   let counter = diceRoll(getAliveEnemy.length);
@@ -37,9 +62,9 @@ const setArena = () => {
   `;
 };
 
-// *********************************
-// SETS SELECTED PLAYER IN THE ARENA
-// ---------------------------------
+// ************************
+// SETS PLAYER IN THE ARENA
+// ------------------------
 const setPlayer = (classType) => {
   getPlayer(classType);
   setPlayerStats();
@@ -59,17 +84,9 @@ const setEnemy = () => {
   `;
 };
 
-// ******************************
-// SET UP GAME AFTER CHAMP SELECT
-// ------------------------------
-const setGameStart = (classType) => {
-  setPlayer(classType);
-  setArena();
-};
-
-// *****************************
-// DISPLAY SELECTED PLAYER STATS
-// -----------------------------
+// ********************
+// DISPLAY PLAYER STATS
+// --------------------
 const setPlayerStats = () => {
   playerNew = selectedPlayer.map((player) => {
     return `
@@ -98,9 +115,9 @@ const setPlayerStats = () => {
   getPlayerStats.innerHTML = `${playerNew}`;
 };
 
-// *****************************
-// DISPLAY SELECTED ENEMY STATS
-// -----------------------------
+// *******************
+// DISPLAY ENEMY STATS
+// -------------------
 const setEnemyStats = () => {
   enemyNew = selectedEnemy.map((enemy) => {
     return `
