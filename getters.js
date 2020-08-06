@@ -17,18 +17,17 @@ let audioFight = document.querySelector(".audio-fight");
 // --------------
 let getPlayerStats = document.querySelector(".player-stats");
 let getPlayerIcon = document.querySelector(".player-icon");
-let getPlayerAvatar = document.querySelector(".player-avatar");
 let getPlayerName = document.querySelector(".player-name");
 let getPlayerHealth = document.querySelector(".player-health");
 let getPlayerMana = document.querySelector(".player-mana");
 let getPlayerStrength = document.querySelector(".playertr-strength");
+let getPlayerAvatar = document.getElementById("player-avatar");
 
 // *************
 // GETTERS ENEMY
 // -------------
 let getEnemyStats = document.querySelector(".enemy-stats");
 let getEnemyIcon = document.querySelector(".enemy-icon");
-let getEnemyAvatar = document.querySelector("enemy-avatar");
 let getEnemyName = document.querySelector(".enemy-name");
 let getEnemyHealth = document.querySelector(".enemy-health");
 let getEnemyMana = document.querySelector(".enemy-mana");

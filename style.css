@@ -74,7 +74,8 @@ footer {
 .btn-attack,
 .btn-start,
 .btn-defend,
-.btn-special {
+.btn-special,
+.btn-rest {
   color: white;
   border: 1px solid white;
   background-color: #333333;
@@ -87,7 +88,8 @@ footer {
 .btn-attack:hover,
 .btn-start:hover,
 .btn-defend:hover,
-.btn-special:hover {
+.btn-special:hover,
+.btn-rest:hover {
   cursor: pointer;
   background-color: white;
   border: 1px solid #333333;
@@ -223,7 +225,6 @@ progress:before {
 /* ********* */
 .shake {
   animation: shake 0.5s;
-  animation-iteration-count: 1;
 }
 @keyframes shake {
   0% {
@@ -258,5 +259,35 @@ progress:before {
   }
   100% {
     transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+.move-right {
+  animation: moveright 1s ease-in-out;
+}
+@keyframes moveright {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(12rem, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.move-left {
+  animation: moveleft 1s ease-in-out;
+}
+@keyframes moveleft {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-12rem, 0);
+  }
+  100% {
+    transform: translate(0, 0);
   }
 }

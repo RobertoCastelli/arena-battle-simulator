@@ -44,6 +44,8 @@ const setArena = () => {
   getScoreResult.innerHTML = "start fighting!";
   getScoreResultHeader.innerHTML = "ARENA SPEAKER";
   getScoreHeader.innerHTML = "COMBAT LOGS";
+  // REMOVE ALL ADDITIONAL ANIMATION CLASSES
+  document.getElementById("player-avatar").classList.remove("move-right");
   // ADD START AND RESET BUTTONS
   getHeaderActions.innerHTML = `
   <p>Get ready!</p>
@@ -81,7 +83,8 @@ const setEnemy = () => {
   <p>Choose your move!</p>
   <button class="btn-attack" onclick="attack()">attack enemy</button>
   <button class="btn-defend" onclick="attack()">defend stance</button>
-  <button class="btn-special" onclick="attack()">super attack</button>
+  <button class="btn-special" onclick="attack()">special attack</button>
+  <button class="btn-rest" onclick="attack()">rest stance</button>
   <button class="btn-restart" onclick="restartGame()">restart game</button>
   `;
 };
@@ -93,7 +96,7 @@ const setPlayerStats = () => {
   playerNew = selectedPlayer.map((player) => {
     return `
       <img class="player-icon" src="${player.icon}"></img>
-      <img class="player-avatar" src="${player.avatar}"></img>
+      <img id="player-avatar" class="player-avatar" src="${player.avatar}"></img>
       <h2 class="player-name">${player.name}</h2>
       <progress 
         class="player-health" 
@@ -124,7 +127,7 @@ const setEnemyStats = () => {
   enemyNew = selectedEnemy.map((enemy) => {
     return `
       <img class="enemy-icon" src="${enemy.icon}"></img>
-      <img class="enemy-avatar" src="${enemy.avatar}"></img>
+      <img id="enemy-avatar" class="enemy-avatar" src="${enemy.avatar}"></img>
       <h2>${enemy.name}</h2>
       <progress 
         class="enemy-health" 

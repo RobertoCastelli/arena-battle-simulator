@@ -1,3 +1,19 @@
+/**
+ * TODO:
+ * add who starts to attack based on speed
+ * add progress bar animation
+ * remove combat log when enemy dies
+ * add ending scene
+ * add counydown
+ * add continue battle button
+ * add restart when you die
+ * upgrade animations
+ * add more champions and mobs
+ * calibrate HP MP etc
+ * add defence, specia attack
+ * add combat sounds
+ **/
+
 // **************
 // FIGHT SEQUENCE
 // --------------
@@ -5,6 +21,7 @@ const attack = () => {
   playerAttack();
   checkDeath(selectedEnemy);
   setEnemyStats();
+  // STOP ENEMY HIT IF ENEMY DIES
   selectedEnemy[0].status !== "dead" &&
     setDelay(2000).then(() => {
       enemyAttack();
@@ -12,6 +29,7 @@ const attack = () => {
       setPlayerStats();
       checkVictory();
     });
+  // CHECK VICTORY Fn IF ENEMY IS ALREADY DEAD
   checkVictory();
 };
 
@@ -19,8 +37,13 @@ const attack = () => {
 // PLAYER ATTACK SEQUENCE
 // ----------------------
 const playerAttack = () => {
+  // START BATTLE ANIMATION
+  document.getElementById("player-avatar").classList.add("move-right", "shake"); //FIXME:
+  // GET DAMAGE + RANDOM
   let playerDamage = diceRoll(selectedPlayer[0].strength);
+  // INJECT HTML HIT SCORE
   getPlayerScore.innerHTML = `${selectedPlayer[0].name} hits for: ${playerDamage}`;
+  // UPDATE HP
   selectedEnemy[0].health -= playerDamage;
 };
 
@@ -28,8 +51,13 @@ const playerAttack = () => {
 // ENEMY ATTACK SEQUENCE
 //---------------------
 const enemyAttack = () => {
+  // START BATTLE ANIMATION
+  document.getElementById("enemy-avatar").classList.add("move-left"); //FIXME:
+  // GET DAMAGE + RANDOM
   let enemyDamage = diceRoll(selectedEnemy[0].strength);
+  // INJECT HTML HIT SCORE
   getEnemyScore.innerHTML = `${selectedEnemy[0].name} hits for: ${enemyDamage}`;
+  // UPDATE HP
   selectedPlayer[0].health -= enemyDamage;
 };
 
