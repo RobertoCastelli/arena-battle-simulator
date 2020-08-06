@@ -192,7 +192,7 @@ footer {
 
 progress {
   -webkit-appearance: none;
-  width: 100%;
+  width: 80%;
   height: 0.8rem;
   text-align: center;
   position: relative;
@@ -204,15 +204,20 @@ progress:before {
   top: -2px;
   left: 0;
   right: 0;
-  color: white;
+  color: #333333;
+  font-weight: bold;
+}
+
+progress::-webkit-progress-bar {
+  background: lightgray;
 }
 
 .player-health::-webkit-progress-value,
 .enemy-health::-webkit-progress-value {
   background: brown;
 }
-.player-mana::-webkit-progress-value,
-.enemy-mana::-webkit-progress-value {
+.player-energy::-webkit-progress-value,
+.enemy-energy::-webkit-progress-value {
   background: orange;
 }
 .player-strength::-webkit-progress-value,

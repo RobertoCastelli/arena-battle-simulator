@@ -37,7 +37,10 @@
           <!-- SCORE -->
           <div class="score-wrapper">
             <div class="score-content">
-              <h3 class="score-header"></h3>
+              <h3 class="score-counter-header"></h3>
+              <div class="score-counter"></div>
+
+              <h3 class="score-log-header"></h3>
               <div class="player-score"></div>
               <div class="enemy-score"></div>
             </div>
@@ -53,9 +56,14 @@
               alt="player-icon"
             />
             <h3 class="enemy-name">???</h3>
+            <label for="enemmy-health">HP</label>
             <progress class="enemy-health"></progress>
-            <progress class="enemy-mana"></progress>
+            <label for="enemy.energy">EP</label>
+            <progress class="enemy-energy"></progress>
+            <label for="enemy-strength">ST</label>
             <progress class="enemy-strength"></progress>
+            <label for="enemy-speed">SP</label>
+            <progress class="enemy-speed"></progress>
           </div>
         </div>
       </div>

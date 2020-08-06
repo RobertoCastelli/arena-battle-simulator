@@ -38,7 +38,7 @@ const attack = () => {
 // ----------------------
 const playerAttack = () => {
   // START BATTLE ANIMATION
-  document.getElementById("player-avatar").classList.add("move-right", "shake"); //FIXME:
+  document.getElementById("player-avatar").classList.add("move-right"); //FIXME:
   // GET DAMAGE + RANDOM
   let playerDamage = diceRoll(selectedPlayer[0].strength);
   // INJECT HTML HIT SCORE
