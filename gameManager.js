@@ -5,8 +5,8 @@ const playersList = () => {
   players.forEach((player) => {
     const playersItem = `
     <li onclick="setGameStart('${player.classe}')" class="champion-item">
-    <img src="${player.icon}" alt="avatar" />
-    <h3 class="champion-name">${player.name}</h3>
+      <img class="champion-image" src="${player.icon}" alt="avatar" />
+      <h3 class="champion-name">${player.name}</h3>
     </li>
     `;
     let position = "beforeend";
@@ -31,16 +31,6 @@ const setGameStart = (classType) => {
   setArena();
 };
 
-// ****************************
-// GET ENEMY FROM LIST IF ALIVE
-// ----------------------------
-const getEnemy = () => {
-  getAliveEnemy = mobs.filter((mob) => mob.status === "alive");
-  let counter = diceRoll(getAliveEnemy.length);
-  selectedEnemy = new Array(getAliveEnemy[counter]);
-  return selectedEnemy;
-};
-
 // *************************
 // SETS THE ARENA FOR BATTLE
 //--------------------------
@@ -57,9 +47,19 @@ const setArena = () => {
   // ADD START AND RESET BUTTONS
   getHeaderActions.innerHTML = `
   <p>Get ready!</p>
-  <button onclick="setEnemy()">start</button>
-  <button onclick="restartGame()">restart</button>
+  <button class="btn-start" onclick="setEnemy()">start game</button>
+  <button class="btn-restart" onclick="restartGame()">restart game</button>
   `;
+};
+
+// ****************************
+// GET ENEMY FROM LIST IF ALIVE
+// ----------------------------
+const getEnemy = () => {
+  getAliveEnemy = mobs.filter((mob) => mob.status === "alive");
+  let counter = diceRoll(getAliveEnemy.length);
+  selectedEnemy = new Array(getAliveEnemy[counter]);
+  return selectedEnemy;
 };
 
 // ************************
@@ -79,8 +79,10 @@ const setEnemy = () => {
   setEnemyStats();
   getHeaderActions.innerHTML = `
   <p>Choose your move!</p>
-  <button onclick="attack()">attack</button>
-  <button onclick="restartGame()">restart</button>
+  <button class="btn-attack" onclick="attack()">attack enemy</button>
+  <button class="btn-defend" onclick="attack()">defend stance</button>
+  <button class="btn-special" onclick="attack()">super attack</button>
+  <button class="btn-restart" onclick="restartGame()">restart game</button>
   `;
 };
 

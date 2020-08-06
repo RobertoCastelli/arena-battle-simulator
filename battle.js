@@ -1,7 +1,6 @@
 // **************
 // FIGHT SEQUENCE
 // --------------
-
 const attack = () => {
   playerAttack();
   checkDeath(selectedEnemy);

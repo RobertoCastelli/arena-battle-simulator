@@ -1,36 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Play&display=swap");
 body {
+  font-family: "Play", sans-serif;
+  font-size: 0.9rem;
   color: #333333;
-  background: url("./images/bgarena.jpg");
-  background-size: cover;
   margin: 0;
   padding: 0;
-  font-family: monospace;
   height: 100%;
   width: 100%;
+  background: url("./images/bgarena.jpg");
+  background-size: cover;
 }
 
 * {
   box-sizing: border-box;
 }
 
-button {
-  border: 1px solid #e4e4e4;
-  background-color: #333333;
-  color: white;
-  font-size: 1rem;
-  padding: 1rem;
-  width: 100px;
-  outline: none;
-}
-
-button:hover {
-  cursor: pointer;
-  background-color: white;
-  border: 1px solid #333333;
-  color: #333333;
-}
-
-.header,
+header,
 footer,
 p {
   text-align: center;
@@ -39,11 +24,96 @@ p {
 h1,
 .header-action {
   text-shadow: 1px 2px 6px white;
-}
-footer {
-  color: #f4f4f4;
+  margin: 0;
 }
 
+footer {
+  color: white;
+}
+
+/* ************************** */
+/* START CHAMPION SELECT MENU */
+/* ************************** */
+.champion-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.champion-item {
+  position: relative;
+  margin: 1rem;
+  cursor: pointer;
+}
+
+.champion-name {
+  position: absolute;
+  top: 75%;
+  left: 25%;
+  text-align: center;
+  background-color: #f4f4f4;
+  transform: rotate(-10deg);
+}
+
+.champion-image {
+  width: 100px;
+  border-radius: 3rem;
+  border: 1px solid #333333;
+  opacity: 0.5;
+}
+
+.champion-image:hover {
+  opacity: 1;
+  transition: 0.5s ease;
+  transform: scale(1.1);
+}
+
+/* ******* */
+/* BUTTONS */
+/* ******* */
+.btn-attack,
+.btn-start,
+.btn-defend,
+.btn-special {
+  color: white;
+  border: 1px solid white;
+  background-color: #333333;
+  padding: 1rem;
+  width: 100px;
+  outline: none;
+  text-transform: uppercase;
+}
+
+.btn-attack:hover,
+.btn-start:hover,
+.btn-defend:hover,
+.btn-special:hover {
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid #333333;
+  color: #333333;
+}
+
+.btn-restart {
+  color: white;
+  background-color: brown;
+  border: 1px solid white;
+  padding: 1rem;
+  width: 100px;
+  outline: none;
+  text-transform: uppercase;
+}
+
+.btn-restart:hover {
+  cursor: pointer;
+  color: brown;
+  background-color: white;
+  border: 1px solid brown;
+}
+
+/* ********* */
+/* CONTAINER */
+/* ********* */
 .container {
   display: flex;
   flex-direction: column;
@@ -56,11 +126,22 @@ footer {
   flex-grow: 1;
 }
 
+/* ***** */
+/* ARENA */
+/* ***** */
+.arena img {
+  width: 100%;
+  border: 1px solid #333333;
+}
+
 .arena,
 .stats {
   visibility: hidden;
 }
 
+/* ***** */
+/* STATS */
+/* ***** */
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -86,55 +167,16 @@ footer {
   left: 30px;
 }
 
-.enemy-icon,
-.player-icon {
-  width: 100px;
-  border-radius: 3rem;
-}
-
 .enemy-avatar {
   position: absolute;
   top: -250px;
   left: -30px;
 }
 
-.champion-list {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.champion-item {
-  position: relative;
-  margin: 1rem;
-  cursor: pointer;
-}
-
-.champion-name {
-  position: absolute;
-  top: 75%;
-  left: 25%;
-  text-align: center;
-  background-color: #f4f4f4;
-  transform: rotate(-10deg);
-}
-
-.champion-item img {
+.enemy-icon,
+.player-icon {
   width: 100px;
   border-radius: 3rem;
-  border: 1px solid #333333;
-  opacity: 0.5;
-}
-
-.champion-item img:hover {
-  opacity: 1;
-  transition: 0.5s ease;
-  transform: scale(1.1);
-}
-
-.arena img {
-  width: 100%;
-  border: 1px solid #333333;
 }
 
 .score-wrapper {
@@ -176,6 +218,9 @@ progress:before {
   background: cadetblue;
 }
 
+/* ********* */
+/* ANIMATION */
+/* ********* */
 .shake {
   animation: shake 0.5s;
   animation-iteration-count: 1;
