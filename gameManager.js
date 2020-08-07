@@ -1,10 +1,10 @@
-// ********************************
-// GENERATE CHAMPION LIST FROM DATA
-// --------------------------------
+// ****************************
+// SHOW CHAMPION LIST FROM DATA
+// ----------------------------
 const playersList = () => {
   players.forEach((player) => {
     const playersItem = `
-    <li onclick="setGameStart('${player.classe}')" class="champion-item">
+    <li onclick="setGameStart('${player.name}')" class="champion-item">
       <img class="champion-image" src="${player.icon}" alt="avatar" />
       <h3 class="champion-name">${player.name}</h3>
     </li>
@@ -18,17 +18,18 @@ playersList();
 // *****************************
 // GET PLAYER FROM LIST AT START
 // -----------------------------
-const getPlayer = (classType) => {
-  selectedPlayer = players.filter((player) => player.classe === classType);
+const getPlayer = (name) => {
+  selectedPlayer = players.filter((player) => player.name === name);
   return selectedPlayer;
 };
 
 // ***********
 // SET UP GAME
 // -----------
-const setGameStart = (classType) => {
-  setPlayer(classType);
+const setGameStart = (name) => {
+  setPlayer(name);
   setArena();
+  setStartScene();
 };
 
 // *************************
@@ -40,7 +41,7 @@ const setArena = () => {
   // SHOW ARENA AND STATS
   getArena.style.visibility = "visible";
   getStats.style.visibility = "visible";
-  // DISPLAY ARENA HEADERS
+  // DISPLAY ARENA DEFAULT TEXT
   getScoreCounterHeader.innerHTML = "ENEMY COUNTER";
   getScore.innerHTML = "?";
   getScoreLogHeader.innerHTML = "COMBAT LOGS";
@@ -48,20 +49,13 @@ const setArena = () => {
   getPlayerScore.innerHTML = "...";
   getScoreResultHeader.innerHTML = "ARENA SPEAKER";
   getScoreResult.innerHTML = "start fighting!";
-  // REMOVE ALL ADDITIONAL ANIMATION CLASSES
-  document.getElementById("player-avatar").classList.remove("move-right");
-  // ADD START AND RESET BUTTONS
-  getHeaderActions.innerHTML = `
-  <p>Get ready!</p>
-  <button class="btn-start" onclick="setEnemy()">start game</button>
-  <button class="btn-restart" onclick="restartGame()">restart game</button>
-  `;
 };
 
 // ****************************
-// GET ENEMY FROM LIST IF ALIVE
+// GET ENEMY FROM DATA IF ALIVE
 // ----------------------------
 const getEnemy = () => {
+  // GET ARRAY OF ALIVE ENEMY
   getAliveEnemy = mobs.filter((mob) => mob.status === "alive");
   // GET NUMBER OF ALIVE ENEMY
   getScore.innerHTML = getAliveEnemy.length;
@@ -74,8 +68,8 @@ const getEnemy = () => {
 // ************************
 // SETS PLAYER IN THE ARENA
 // ------------------------
-const setPlayer = (classType) => {
-  getPlayer(classType);
+const setPlayer = (name) => {
+  getPlayer(name);
   setPlayerStats();
 };
 
@@ -86,14 +80,11 @@ const setEnemy = () => {
   // audioFight.play(); // <-< UNCOMMENT FOR MUSIC
   getEnemy();
   setEnemyStats();
-  getHeaderActions.innerHTML = `
-  <p>Make your move!</p>
-  <button class="btn-attack" onclick="attack()">attack enemy</button>
-  <button class="btn-defend" onclick="attack()">defend stance</button>
-  <button class="btn-rest" onclick="attack()">rest stance</button>
-  <button class="btn-special" onclick="attack()">special attack</button>
-  <button class="btn-restart" onclick="restartGame()">restart game</button>
-  `;
+  // CLEAR SCORE AFTER SUMMONING ENEMY
+  getScoreResult.innerHTML = "start fighting!";
+  getPlayerScore.innerHTML = "...";
+  getEnemyScore.innerHTML = "...";
+  setFightScene();
 };
 
 // ********************
@@ -154,7 +145,6 @@ const setEnemyStats = () => {
         max="100" 
         data-lable="${enemy.health}">
       </progress>
-    
       <label for="enemy-energy">EP</label>
       <progress 
         class="enemy-energy" 
@@ -179,4 +169,42 @@ const setEnemyStats = () => {
       `;
   });
   getEnemyStats.innerHTML = `${enemyNew}`;
+};
+
+// ************************
+// BTN HEADER AT START GAME
+// ------------------------
+const setStartScene = () => {
+  // REMOVE ALL ADDITIONAL ANIMATION CLASSES
+  document.getElementById("player-avatar").classList.remove("move-right");
+  getHeaderActions.innerHTML = `
+  <p>Get ready!</p>
+  <button class="btn-start" onclick="setEnemy()">summon demon</button>
+  <button class="btn-restart" onclick="restartGame()">restart game</button>
+  `;
+};
+
+// **************************
+// BTN HEADER AT PLAYER DEATH
+// --------------------------
+const setDeathScene = () => {
+  // ADD START AND RESET BUTTONS
+  getHeaderActions.innerHTML = `
+  <p>You lose!</p>
+  <button class="btn-restart" onclick="restartGame()">restart game</button>
+  `;
+};
+
+// ************************
+// BTN HEADER WHEN FIGHTING
+// ------------------------
+const setFightScene = () => {
+  getHeaderActions.innerHTML = `
+  <p>Make your move!</p>
+  <button class="btn-attack" onclick="attack()">attack enemy</button>
+  <button class="btn-defend" onclick="attack()">defend stance</button>
+  <button class="btn-rest" onclick="attack()">rest stance</button>
+  <button class="btn-special" onclick="attack()">special attack</button>
+  <button class="btn-restart" onclick="restartGame()">restart game</button>
+  `;
 };

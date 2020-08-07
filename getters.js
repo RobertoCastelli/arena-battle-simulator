@@ -37,3 +37,4 @@ let getEnemyName = document.querySelector(".enemy-name");
 let getEnemyHealth = document.querySelector(".enemy-health");
 let getEnemyEnergy = document.querySelector(".enemy-energy");
 let getEnemyStrength = document.querySelector(".enemy-strength");
+let getEnemyAvatar = document.getElementById("enemy-avatar");

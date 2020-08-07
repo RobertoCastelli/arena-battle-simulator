@@ -30,7 +30,7 @@ const attack = () => {
       setPlayerStats();
       checkVictory();
     });
-  // CHECK VICTORY Fn IF ENEMY IS ALREADY DEAD
+  // INIT OUT OF Fn IF ENEMY IS ALREADY DEAD
   checkVictory();
 };
 
@@ -67,12 +67,17 @@ const enemyAttack = () => {
 // --------------
 const checkDeath = (champion) => {
   if (champion[0].health <= 0) {
+    // DISPLAY DEATH TEMPLATE IN STATS SECTION
     resetAudio();
     champion[0].health = 0;
     champion[0].icon = "./images/rip.png";
     champion[0].status = "dead";
     champion[0].avatar = "";
-    setDelay(2500).then(() => setArena());
+    // IF PLAYER DIES >-> RESTART
+    // IF ENEMY DIES, >-> CONTINUE GAME
+    champion[0].type === "player"
+      ? setDeathScene()
+      : setDelay(2500).then(() => setStartScene());
   }
 };
 
