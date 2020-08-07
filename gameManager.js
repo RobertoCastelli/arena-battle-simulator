@@ -56,8 +56,8 @@ const setArena = () => {
 // ----------------------------
 const getEnemy = () => {
   // GET A RANDOM ENEMY FROM ALIVE POOL
-  let counter = diceRoll(getAliveEnemy.length);
-  selectedEnemy = new Array(getAliveEnemy[counter]);
+  let randomPick = diceRoll(getAliveEnemy.length);
+  selectedEnemy = new Array(getAliveEnemy[randomPick]);
   return selectedEnemy;
 };
 
@@ -125,6 +125,56 @@ const setPlayerStats = () => {
   getPlayerStats.innerHTML = `${playerNew}`;
 };
 
+// ************************
+// BTN HEADER AT START GAME
+// ------------------------
+const setStartScene = () => {
+  // REMOVE ALL ADDITIONAL ANIMATION CLASSES
+  document.getElementById("player-avatar").classList.remove("move-right");
+  // UPDATE COUNTER
+  getAliveEnemy = mobs.filter((mob) => mob.status === "alive");
+  getScore.innerHTML = getAliveEnemy.length;
+
+  if (getAliveEnemy.length === 0) {
+    getHeaderActions.innerHTML = `
+    <p>you WIN!</p>
+    <button class="btn-restart" onclick="restartGame()">restart game</button>
+    `;
+  } else {
+    getHeaderActions.innerHTML = `
+    <p>Get ready!</p>
+    <button class="btn-start" onclick="setEnemy()">summon demon</button>
+    <button class="btn-restart" onclick="restartGame()">restart game</button>
+    `;
+  }
+};
+
+// **************************
+// BTN HEADER AT PLAYER DEATH
+// --------------------------
+const setDeathScene = () => {
+  // ADD RESTART BTN SET
+  getHeaderActions.innerHTML = `
+  <p>You lose!</p>
+  <button class="btn-restart" onclick="restartGame()">restart game</button>
+  `;
+};
+
+// ************************
+// BTN HEADER WHEN FIGHTING
+// ------------------------
+const setFightScene = () => {
+  // ADD FIGHTIN BTN SET
+  getHeaderActions.innerHTML = `
+  <p>Make your move!</p>
+  <button class="btn-attack" onclick="attack()">attack enemy</button>
+  <button class="btn-defend" onclick="attack()">defend stance</button>
+  <button class="btn-rest" onclick="attack()">rest stance</button>
+  <button class="btn-special" onclick="attack()">special attack</button>
+  <button class="btn-restart" onclick="restartGame()">restart game</button>
+  `;
+};
+
 // *******************
 // DISPLAY ENEMY STATS
 // -------------------
@@ -165,47 +215,4 @@ const setEnemyStats = () => {
       `;
   });
   getEnemyStats.innerHTML = `${enemyNew}`;
-};
-
-// ************************
-// BTN HEADER AT START GAME
-// ------------------------
-const setStartScene = () => {
-  // REMOVE ALL ADDITIONAL ANIMATION CLASSES
-  document.getElementById("player-avatar").classList.remove("move-right");
-  // UPDATE COUNTER
-  getAliveEnemy = mobs.filter((mob) => mob.status === "alive");
-  getScore.innerHTML = getAliveEnemy.length;
-  // ADD START BTN SET
-  getHeaderActions.innerHTML = `
-  <p>Get ready!</p>
-  <button class="btn-start" onclick="setEnemy()">summon demon</button>
-  <button class="btn-restart" onclick="restartGame()">restart game</button>
-  `;
-};
-
-// **************************
-// BTN HEADER AT PLAYER DEATH
-// --------------------------
-const setDeathScene = () => {
-  // ADD RESTART BTN SET
-  getHeaderActions.innerHTML = `
-      <p>You lose!</p>
-      <button class="btn-restart" onclick="restartGame()">restart game</button>
-  `;
-};
-
-// ************************
-// BTN HEADER WHEN FIGHTING
-// ------------------------
-const setFightScene = () => {
-  // ADD FIGHTIN BTN SET
-  getHeaderActions.innerHTML = `
-  <p>Make your move!</p>
-  <button class="btn-attack" onclick="attack()">attack enemy</button>
-  <button class="btn-defend" onclick="attack()">defend stance</button>
-  <button class="btn-rest" onclick="attack()">rest stance</button>
-  <button class="btn-special" onclick="attack()">special attack</button>
-  <button class="btn-restart" onclick="restartGame()">restart game</button>
-  `;
 };
