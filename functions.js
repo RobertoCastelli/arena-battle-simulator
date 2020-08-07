@@ -80,7 +80,7 @@ const setPlayerModal = () => {
     return `
     <h2 class="player-name">${player.name}</h2>
     <img class="player-icon" src="${player.icon}"></img>
-    <p>${player.classe}</p>
+    <h3>${player.classe}</h3>
     <p>${player.description}</p>
     <button class="btn-start" onclick="setGameStart('${player.name}')">Select</button>
     <button class="btn-restart" onclick="closePlayerModal()">Cancel</button>
@@ -197,7 +197,7 @@ const setPlayerStats = () => {
     return `
       <img class="player-icon" src="${player.icon}"></img>
       <img id="player-avatar" class="player-avatar" src="${player.avatar}"></img>
-      <h2 class="player-name">${player.name}</h2>
+      <h3 class="player-name">${player.name}</h3>
       <label for="player-health">HP</label>
       <progress 
         class="player-health" 
@@ -239,7 +239,7 @@ const setEnemyStats = () => {
     return `
       <img class="enemy-icon" src="${enemy.icon}"></img>
       <img id="enemy-avatar" class="enemy-avatar" src="${enemy.avatar}"></img>
-      <h2>${enemy.name}</h2>
+      <h3>${enemy.name}</h3>
       <label for="enemy-health">HP</label>
       <progress 
         class="enemy-health" 

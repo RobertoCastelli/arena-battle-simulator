@@ -9,6 +9,7 @@ body {
   width: 100%;
   background: url("./images/bgarena.jpg");
   background-size: cover;
+  overflow: hidden;
 }
 
 * {
@@ -78,8 +79,12 @@ footer {
 .modal-container {
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
-  display: grid;
-  place-content: center;
+  /* display: grid;
+  place-content: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
   top: 0;
   left: 0;
   right: 0;
@@ -106,8 +111,8 @@ footer {
 .btn-special,
 .btn-rest {
   color: white;
-  border: 0.3rem outset white;
-  background-color: #333333;
+  border: 0.3rem outset #999999;
+  background-color: #666666;
   padding: 1rem;
   width: 100px;
   outline: none;
@@ -120,15 +125,15 @@ footer {
 .btn-special:hover,
 .btn-rest:hover {
   cursor: pointer;
-  background-color: white;
-  border: 0.3rem outset #333333;
-  color: #333333;
+  border: 0.3rem outset #666666;
+  background-color: #333333;
+  color: white;
 }
 
 .btn-restart {
   color: white;
-  background-color: brown;
-  border: 0.3rem outset white;
+  background-color: teal;
+  border: 0.3rem outset cadetblue;
   padding: 1rem;
   width: 100px;
   outline: none;
@@ -136,10 +141,10 @@ footer {
 }
 
 .btn-restart:hover {
+  background-color: brown;
+  border: 0.3rem outset rgb(185, 91, 91);
   cursor: pointer;
-  color: brown;
-  background-color: white;
-  border: 0.3rem outset brown;
+  color: white;
 }
 
 /* ********* */
@@ -192,7 +197,7 @@ footer {
 .enemy-stats {
   text-align: center;
   position: relative;
-  padding: 1rem;
+  padding: 1rem 0.5rem;
   border: 0.3rem outset bisque;
   background: url(./images/bgstats.jpg);
   background-size: cover;
@@ -241,9 +246,8 @@ footer {
 
 progress {
   -webkit-appearance: none;
-  width: 80%;
+  width: 85%;
   height: 0.8rem;
-  text-align: center;
   position: relative;
 }
 
