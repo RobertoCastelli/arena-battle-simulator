@@ -9,6 +9,7 @@
  * add combat sounds
  * add animation effect on special attack
  * add ending recap score
+ * add LEGEND
  **/
 
 // ************
@@ -146,7 +147,7 @@ const setStartScene = () => {
   document.getElementById("player-avatar").classList.remove("move-right");
   // UPDATE COUNTER
   getAliveEnemy = mobs.filter((mob) => mob.status === "alive");
-  getScore.innerHTML = getAliveEnemy.length;
+  getScore.innerHTML = mobs.length - getAliveEnemy.length;
   // CHECK IF ALL ENEMY AREA DEAD
   if (getAliveEnemy.length === 0) {
     getHeaderActions.innerHTML = `
