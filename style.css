@@ -86,13 +86,15 @@ footer {
   bottom: 0;
   z-index: 1;
   visibility: hidden;
+  text-align: center;
 }
 
 .modal-content {
   height: 400px;
   width: 300px;
-  border: 0.5rem ridge #666666;
-  background-color: bisque;
+  border: 0.5rem outset bisque;
+  background: url(./images/bgstats.jpg);
+  background-size: cover;
 }
 
 /* ******* */
@@ -104,7 +106,7 @@ footer {
 .btn-special,
 .btn-rest {
   color: white;
-  border: 1px solid white;
+  border: 0.3rem outset white;
   background-color: #333333;
   padding: 1rem;
   width: 100px;
@@ -119,14 +121,14 @@ footer {
 .btn-rest:hover {
   cursor: pointer;
   background-color: white;
-  border: 1px solid #333333;
+  border: 0.3rem outset #333333;
   color: #333333;
 }
 
 .btn-restart {
   color: white;
   background-color: brown;
-  border: 1px solid white;
+  border: 0.3rem outset white;
   padding: 1rem;
   width: 100px;
   outline: none;
@@ -137,7 +139,7 @@ footer {
   cursor: pointer;
   color: brown;
   background-color: white;
-  border: 1px solid brown;
+  border: 0.3rem outset brown;
 }
 
 /* ********* */
@@ -160,9 +162,9 @@ footer {
 /* ***** */
 .arena img {
   width: 100%;
-  border: 0.1rem solid bisque;
-  box-shadow: 0px 0px 30px 0px bisque;
-  margin-bottom: 1rem;
+  border: 0.3rem outset bisque;
+  /* box-shadow: 0px 0px 30px 0px bisque; */
+  margin-bottom: 0.3rem;
 }
 
 .arena,
@@ -180,14 +182,25 @@ footer {
   gap: 0.5rem;
 }
 
-.stats .score-wrapper,
-.stats .player-stats,
-.stats .enemy-stats {
+.combat-logs {
+  margin-top: 0.5rem;
+}
+
+.score-content,
+.combat-logs,
+.player-stats,
+.enemy-stats {
   text-align: center;
   position: relative;
   padding: 1rem;
   border: 0.3rem outset bisque;
   background: url(./images/bgstats.jpg);
+  background-size: cover;
+}
+
+.score-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .player-avatar {
@@ -210,21 +223,15 @@ footer {
   border: 0.3rem inset bisque;
 }
 
-.score-wrapper {
-  display: flex;
-  flex-direction: column;
-  min-height: 50%;
-}
-
 .score-content {
   flex-grow: 1;
+  /* border: 0.3rem outset bisque; */
 }
 
 .score-counter {
   font-size: 1rem;
   line-height: 1.5rem;
   background-color: cadetblue;
-  /* border-radius: 50%; */
   color: white;
   width: 2rem;
   height: 2rem;

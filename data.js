@@ -23,6 +23,7 @@ const players = [
     strength: 120,
     speed: 100,
     status: "alive",
+    description: "high dodge and initiative",
   },
 ];
 
