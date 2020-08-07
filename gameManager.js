@@ -83,50 +83,8 @@ const setEnemy = () => {
   setFightScene();
 };
 
-// ********************
-// DISPLAY PLAYER STATS
-// --------------------
-const setPlayerStats = () => {
-  playerNew = selectedPlayer.map((player) => {
-    return `
-      <img class="player-icon" src="${player.icon}"></img>
-      <img id="player-avatar" class="player-avatar" src="${player.avatar}"></img>
-      <h2 class="player-name">${player.name}</h2>
-      <label for="player-health">HP</label>
-      <progress 
-        class="player-health" 
-        value="${player.health}" 
-        max="100"
-        data-lable="${player.health}">
-      </progress>
-      <label for="player-energy">EP</label>
-      <progress 
-        class="player-energy" 
-        value="${player.energy}" 
-        max="100"
-        data-lable="${player.energy}">
-      </progress>
-      <label for="player-strength">ST</label>
-      <progress 
-        class="player-strength" 
-        value="${player.strength}" 
-        max="100" 
-        data-lable="${player.strength}">
-      </progress>
-      <label for="player-speed">SP</label>
-      <progress 
-        class="player-speed" 
-        value="${player.speed}" 
-        max="100" 
-        data-lable="${player.speed}">
-      </progress>
-      `;
-  });
-  getPlayerStats.innerHTML = `${playerNew}`;
-};
-
 // ************************
-// BTN HEADER AT START GAME
+// BTN HEADER AT START TURN
 // ------------------------
 const setStartScene = () => {
   // REMOVE ALL ADDITIONAL ANIMATION CLASSES
@@ -134,7 +92,7 @@ const setStartScene = () => {
   // UPDATE COUNTER
   getAliveEnemy = mobs.filter((mob) => mob.status === "alive");
   getScore.innerHTML = getAliveEnemy.length;
-
+  // CHECK IF ALL ENEMY AREA DEAD
   if (getAliveEnemy.length === 0) {
     getHeaderActions.innerHTML = `
     <p>you WIN!</p>
@@ -175,6 +133,48 @@ const setFightScene = () => {
   `;
 };
 
+// ********************
+// DISPLAY PLAYER STATS
+// --------------------
+const setPlayerStats = () => {
+  playerNew = selectedPlayer.map((player) => {
+    return `
+      <img class="player-icon" src="${player.icon}"></img>
+      <img id="player-avatar" class="player-avatar" src="${player.avatar}"></img>
+      <h2 class="player-name">${player.name}</h2>
+      <label for="player-health">HP</label>
+      <progress 
+      class="player-health" 
+      value="${player.health}" 
+      max="100"
+      data-lable="${player.health}">
+      </progress>
+      <label for="player-energy">EP</label>
+      <progress 
+      class="player-energy" 
+      value="${player.energy}" 
+      max="100"
+      data-lable="${player.energy}">
+      </progress>
+      <label for="player-strength">ST</label>
+      <progress 
+      class="player-strength" 
+      value="${player.strength}" 
+      max="100" 
+      data-lable="${player.strength}">
+      </progress>
+      <label for="player-speed">SP</label>
+      <progress 
+      class="player-speed" 
+      value="${player.speed}" 
+      max="100" 
+      data-lable="${player.speed}">
+      </progress>
+      `;
+  });
+  getPlayerStats.innerHTML = `${playerNew}`;
+};
+
 // *******************
 // DISPLAY ENEMY STATS
 // -------------------
@@ -186,31 +186,31 @@ const setEnemyStats = () => {
       <h2>${enemy.name}</h2>
       <label for="enemy-health">HP</label>
       <progress 
-        class="enemy-health" 
-        value="${enemy.health}" 
-        max="100" 
-        data-lable="${enemy.health}">
+      class="enemy-health" 
+      value="${enemy.health}" 
+      max="100" 
+      data-lable="${enemy.health}">
       </progress>
       <label for="enemy-energy">EP</label>
       <progress 
-        class="enemy-energy" 
-        value="${enemy.energy}" 
-        max="100" 
-        data-lable="${enemy.energy}">
+      class="enemy-energy" 
+      value="${enemy.energy}" 
+      max="100" 
+      data-lable="${enemy.energy}">
       </progress>
       <label for="enemy-strength">ST</label>
       <progress 
-        class="enemy-strength" 
-        value="${enemy.strength}" 
-        max="100" 
-        data-lable="${enemy.strength}">
+      class="enemy-strength" 
+      value="${enemy.strength}" 
+      max="100" 
+      data-lable="${enemy.strength}">
       </progress>
       <label for="enemy-speed">SP</label>
       <progress 
-        class="enemy-speed" 
-        value="${enemy.speed}" 
-        max="100" 
-        data-lable="${enemy.speed}">
+      class="enemy-speed" 
+      value="${enemy.speed}" 
+      max="100" 
+      data-lable="${enemy.speed}">
       </progress>
       `;
   });
