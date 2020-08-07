@@ -55,10 +55,6 @@ const setArena = () => {
 // GET ENEMY FROM DATA IF ALIVE
 // ----------------------------
 const getEnemy = () => {
-  // GET ARRAY OF ALIVE ENEMY
-  getAliveEnemy = mobs.filter((mob) => mob.status === "alive");
-  // GET NUMBER OF ALIVE ENEMY
-  getScore.innerHTML = getAliveEnemy.length;
   // GET A RANDOM ENEMY FROM ALIVE POOL
   let counter = diceRoll(getAliveEnemy.length);
   selectedEnemy = new Array(getAliveEnemy[counter]);
@@ -177,6 +173,10 @@ const setEnemyStats = () => {
 const setStartScene = () => {
   // REMOVE ALL ADDITIONAL ANIMATION CLASSES
   document.getElementById("player-avatar").classList.remove("move-right");
+  // UPDATE COUNTER
+  getAliveEnemy = mobs.filter((mob) => mob.status === "alive");
+  getScore.innerHTML = getAliveEnemy.length;
+  // ADD START BTN SET
   getHeaderActions.innerHTML = `
   <p>Get ready!</p>
   <button class="btn-start" onclick="setEnemy()">summon demon</button>
@@ -188,10 +188,10 @@ const setStartScene = () => {
 // BTN HEADER AT PLAYER DEATH
 // --------------------------
 const setDeathScene = () => {
-  // ADD START AND RESET BUTTONS
+  // ADD RESTART BTN SET
   getHeaderActions.innerHTML = `
-  <p>You lose!</p>
-  <button class="btn-restart" onclick="restartGame()">restart game</button>
+      <p>You lose!</p>
+      <button class="btn-restart" onclick="restartGame()">restart game</button>
   `;
 };
 
@@ -199,6 +199,7 @@ const setDeathScene = () => {
 // BTN HEADER WHEN FIGHTING
 // ------------------------
 const setFightScene = () => {
+  // ADD FIGHTIN BTN SET
   getHeaderActions.innerHTML = `
   <p>Make your move!</p>
   <button class="btn-attack" onclick="attack()">attack enemy</button>
