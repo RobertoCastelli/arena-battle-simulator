@@ -1,16 +1,12 @@
 /**
  * TODO:
  * add who starts to attack based on speed
+ * add modal at champ select with description
  * add progress bar animation
- * remove combat log when enemy dies
  * add ending scene
- * add counydown
- * add continue battle button
- * add restart when you die
  * upgrade animations
  * add more champions and mobs
  * calibrate HP MP etc
- * add defence, specia attack
  * add combat sounds
  * add animation effect on special attack
  **/

@@ -14,6 +14,8 @@ let getScoreCounterHeader = document.querySelector(".score-counter-header");
 let getHeaderActions = document.querySelector(".header-action");
 
 let audioFight = document.querySelector(".audio-fight");
+let getModalContent = document.querySelector(".modal-content");
+let getModalContainer = document.querySelector(".modal-container");
 
 // **************
 // GETTERS PLAYER

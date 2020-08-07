@@ -4,7 +4,7 @@
 const playersList = () => {
   players.forEach((player) => {
     const playersItem = `
-    <li onclick="setGameStart('${player.name}')" class="champion-item">
+    <li onclick="getPlayerModal('${player.name}')" class="champion-item">
       <img class="champion-image" src="${player.icon}" alt="avatar" />
       <h3 class="champion-name">${player.name}</h3>
     </li>
@@ -23,10 +23,32 @@ const getPlayer = (name) => {
   return selectedPlayer;
 };
 
+const getPlayerModal = (name) => {
+  getModalContainer.style.visibility = "visible";
+  getPlayer(name);
+  setPlayerModal();
+  console.log(selectedPlayer);
+};
+
+const setPlayerModal = () => {
+  infoPlayer = selectedPlayer.map((player) => {
+    return `
+    <h2 class="player-name">${player.name}</h2>
+    <p>${player.classe}</p>
+    <p>${player.description}</p>
+    <button onclick="setGameStart('${player.name}')">Select</button>
+    <button>Cancel</button>
+    
+    `;
+  });
+  getModalContent.innerHTML = infoPlayer;
+};
+
 // ***********
 // SET UP GAME
 // -----------
 const setGameStart = (name) => {
+  getModalContainer.style.visibility = "hidden";
   setPlayer(name);
   setArena();
   setStartScene();
@@ -144,35 +166,35 @@ const setPlayerStats = () => {
       <h2 class="player-name">${player.name}</h2>
       <label for="player-health">HP</label>
       <progress 
-      class="player-health" 
-      value="${player.health}" 
-      max="100"
-      data-lable="${player.health}">
+        class="player-health" 
+        value="${player.health}" 
+        max="100"
+        data-lable="${player.health}">
       </progress>
       <label for="player-energy">EP</label>
       <progress 
-      class="player-energy" 
-      value="${player.energy}" 
-      max="100"
-      data-lable="${player.energy}">
+        class="player-energy" 
+        value="${player.energy}" 
+        max="100"
+        data-lable="${player.energy}">
       </progress>
       <label for="player-strength">ST</label>
       <progress 
       class="player-strength" 
-      value="${player.strength}" 
-      max="100" 
-      data-lable="${player.strength}">
+        value="${player.strength}" 
+        max="100" 
+        data-lable="${player.strength}">
       </progress>
       <label for="player-speed">SP</label>
       <progress 
-      class="player-speed" 
-      value="${player.speed}" 
-      max="100" 
-      data-lable="${player.speed}">
+        class="player-speed" 
+        value="${player.speed}" 
+        max="100" 
+        data-lable="${player.speed}">
       </progress>
       `;
   });
-  getPlayerStats.innerHTML = `${playerNew}`;
+  getPlayerStats.innerHTML = playerNew;
 };
 
 // *******************
@@ -186,33 +208,33 @@ const setEnemyStats = () => {
       <h2>${enemy.name}</h2>
       <label for="enemy-health">HP</label>
       <progress 
-      class="enemy-health" 
-      value="${enemy.health}" 
-      max="100" 
-      data-lable="${enemy.health}">
+        class="enemy-health" 
+        value="${enemy.health}" 
+        max="100" 
+        data-lable="${enemy.health}">
       </progress>
       <label for="enemy-energy">EP</label>
       <progress 
-      class="enemy-energy" 
-      value="${enemy.energy}" 
-      max="100" 
-      data-lable="${enemy.energy}">
+        class="enemy-energy" 
+        value="${enemy.energy}" 
+        max="100" 
+        data-lable="${enemy.energy}">
       </progress>
       <label for="enemy-strength">ST</label>
       <progress 
-      class="enemy-strength" 
-      value="${enemy.strength}" 
-      max="100" 
-      data-lable="${enemy.strength}">
+        class="enemy-strength" 
+        value="${enemy.strength}" 
+        max="100" 
+        data-lable="${enemy.strength}">
       </progress>
       <label for="enemy-speed">SP</label>
       <progress 
-      class="enemy-speed" 
-      value="${enemy.speed}" 
-      max="100" 
-      data-lable="${enemy.speed}">
+        class="enemy-speed" 
+        value="${enemy.speed}" 
+        max="100" 
+        data-lable="${enemy.speed}">
       </progress>
       `;
   });
-  getEnemyStats.innerHTML = `${enemyNew}`;
+  getEnemyStats.innerHTML = enemyNew;
 };

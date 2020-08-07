@@ -10,6 +10,7 @@ const players = [
     strength: 200,
     speed: 50,
     status: "alive",
+    description: "fast energy regeneration",
   },
   {
     icon: "./images/players/shen.jpg",
@@ -28,7 +29,7 @@ const players = [
 const mobs = [
   {
     icon: "./images/mobs/gurgaz.jpg",
-    avatar: "./images/mobs/monster.gif",
+    avatar: "./images/mobs/goblin1.gif",
     name: "Gurgaz",
     classe: "goblin",
     type: "enemy",
@@ -54,7 +55,7 @@ const mobs = [
   ,
   {
     icon: "./images/mobs/mordekaiser.jpg",
-    avatar: "./images/mobs/monster.gif",
+    avatar: "./images/mobs/mordekaiser1.gif",
     name: "Mordekaiser",
     classe: "phantom",
     type: "enemy",
