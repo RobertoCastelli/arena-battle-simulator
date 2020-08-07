@@ -12,6 +12,7 @@
  * calibrate HP MP etc
  * add defence, specia attack
  * add combat sounds
+ * add animation effect on special attack
  **/
 
 // **************

@@ -35,17 +35,17 @@ const setGameStart = (classType) => {
 // SETS THE ARENA FOR BATTLE
 //--------------------------
 const setArena = () => {
-  // REMOVE SELECT CHAMPION LIST
+  // HIDE SELECT CHAMPION LIST
   championList.innerHTML = "";
-  // DISPLAY ARENA AND STATS
+  // SHOW ARENA AND STATS
   getArena.style.visibility = "visible";
   getStats.style.visibility = "visible";
   // DISPLAY ARENA HEADERS
   getScoreCounterHeader.innerHTML = "ENEMY COUNTER";
-  getScore.innerHTML = "???";
+  getScore.innerHTML = "?";
   getScoreLogHeader.innerHTML = "COMBAT LOGS";
-  getPlayerScore.innerHTML = "...";
   getEnemyScore.innerHTML = "...";
+  getPlayerScore.innerHTML = "...";
   getScoreResultHeader.innerHTML = "ARENA SPEAKER";
   getScoreResult.innerHTML = "start fighting!";
   // REMOVE ALL ADDITIONAL ANIMATION CLASSES
@@ -63,7 +63,9 @@ const setArena = () => {
 // ----------------------------
 const getEnemy = () => {
   getAliveEnemy = mobs.filter((mob) => mob.status === "alive");
+  // GET NUMBER OF ALIVE ENEMY
   getScore.innerHTML = getAliveEnemy.length;
+  // GET A RANDOM ENEMY FROM ALIVE POOL
   let counter = diceRoll(getAliveEnemy.length);
   selectedEnemy = new Array(getAliveEnemy[counter]);
   return selectedEnemy;
@@ -85,7 +87,7 @@ const setEnemy = () => {
   getEnemy();
   setEnemyStats();
   getHeaderActions.innerHTML = `
-  <p>Choose your move!</p>
+  <p>Make your move!</p>
   <button class="btn-attack" onclick="attack()">attack enemy</button>
   <button class="btn-defend" onclick="attack()">defend stance</button>
   <button class="btn-rest" onclick="attack()">rest stance</button>
@@ -103,29 +105,33 @@ const setPlayerStats = () => {
       <img class="player-icon" src="${player.icon}"></img>
       <img id="player-avatar" class="player-avatar" src="${player.avatar}"></img>
       <h2 class="player-name">${player.name}</h2>
+      <label for="player-health">HP</label>
       <progress 
         class="player-health" 
         value="${player.health}" 
         max="100"
-        data-lable="HP">
+        data-lable="${player.health}">
       </progress>
+      <label for="player-energy">EP</label>
       <progress 
         class="player-energy" 
         value="${player.energy}" 
         max="100"
-        data-lable="EP">
+        data-lable="${player.energy}">
       </progress>
+      <label for="player-strength">ST</label>
       <progress 
         class="player-strength" 
         value="${player.strength}" 
         max="100" 
-        data-lable="STR">
+        data-lable="${player.strength}">
       </progress>
+      <label for="player-speed">SP</label>
       <progress 
         class="player-speed" 
         value="${player.speed}" 
         max="100" 
-        data-lable="SPD">
+        data-lable="${player.speed}">
       </progress>
       `;
   });
