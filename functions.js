@@ -15,10 +15,8 @@
 // ************
 // RESTART GAME
 //-------------
-const restartGame = () => {
-  confirm("Your game is about to restart");
-  window.location.reload();
-};
+const restartGame = () =>
+  confirm("Your game is about to restart") && window.location.reload();
 
 // *********
 // DICE ROLL
