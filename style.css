@@ -1,8 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Play&display=swap");
-body {
+body,
+html {
   font-family: "Play", sans-serif;
   font-size: 0.9rem;
+  letter-spacing: 0.06rem;
   color: #333333;
+  height: 100%;
+  width: 100%;
   margin: 0;
   padding: 0;
   background: url("./images/bgarena.jpg");
@@ -58,7 +62,7 @@ footer {
 }
 
 .champion-image {
-  width: 100px;
+  width: 90px;
   border-radius: 3rem;
   border: 1px solid #333333;
   opacity: 0.5;
