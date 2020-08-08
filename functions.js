@@ -128,7 +128,7 @@ const setPlayer = (name) => {
 // SETS ENEMEY IN THE ARENA
 // ------------------------
 const setEnemy = () => {
-  // audioFight.play(); // <-< UNCOMMENT FOR MUSIC
+  audioFight.play(); // <-< UNCOMMENT FOR MUSIC ON/OFF
   getEnemy();
   setEnemyStats();
   // CLEAR SCORE AFTER SUMMONING ENEMY
@@ -149,6 +149,7 @@ const setStartScene = () => {
   getScore.innerHTML = mobs.length - getAliveEnemy.length;
   // CHECK IF ALL ENEMY AREA DEAD
   if (getAliveEnemy.length === 0) {
+    resetAudio();
     getHeaderActions.innerHTML = `
     <p>you WIN!</p>
     <button class="btn-restart" onclick="restartGame()">restart game</button>
@@ -278,6 +279,8 @@ const setEnemyStats = () => {
 const playerAttack = () => {
   // START BATTLE ANIMATION
   document.getElementById("player-avatar").classList.add("move-right"); //FIXME:
+  // GENERATE HIT SOUND
+  audioSword.play();
   // GET DAMAGE + RANDOM
   let playerDamage = diceRoll(selectedPlayer[0].strength);
   // INJECT HTML HIT SCORE
@@ -292,6 +295,8 @@ const playerAttack = () => {
 const enemyAttack = () => {
   // START BATTLE ANIMATION
   document.getElementById("enemy-avatar").classList.add("move-left"); //FIXME:
+  // GENERATE HIT SOUND
+  audioPunch.play();
   // GET DAMAGE + RANDOM
   let enemyDamage = diceRoll(selectedEnemy[0].strength);
   // INJECT HTML HIT SCORE
@@ -305,7 +310,6 @@ const enemyAttack = () => {
 // --------------
 const checkDeath = (champion) => {
   if (champion[0].health <= 0) {
-    resetAudio();
     champion[0].health = 0;
     champion[0].icon = "./images/rip.png";
     champion[0].status = "dead";
@@ -326,6 +330,7 @@ const checkVictory = () => {
     getScoreResult.innerHTML = `${selectedEnemy[0].name} slays ${selectedPlayer[0].name}`;
     setTimeout(() => {
       getScoreResult.innerHTML = "You are dead";
+      resetAudio();
     }, 2500);
   } else if (selectedEnemy[0].health <= 0 && selectedPlayer[0].health > 0) {
     getScoreResult.innerHTML = `${selectedPlayer[0].name} slays ${selectedEnemy[0].name}`;

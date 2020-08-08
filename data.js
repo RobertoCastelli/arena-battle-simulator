@@ -7,7 +7,7 @@ const players = [
     type: "player",
     health: 100,
     energy: 50,
-    strength: 200,
+    strength: 100,
     speed: 50,
     status: "alive",
     description: "fast energy regeneration",

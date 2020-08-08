@@ -14,6 +14,9 @@ let getScoreCounterHeader = document.querySelector(".score-counter-header");
 let getHeaderActions = document.querySelector(".header-action");
 
 let audioFight = document.querySelector(".audio-fight");
+let audioSword = document.querySelector(".audio-sword");
+let audioPunch = document.querySelector(".audio-punch");
+let audioSpecial = document.querySelector(".audio-special");
 let getModalContent = document.querySelector(".modal-content");
 let getModalContainer = document.querySelector(".modal-container");
 
