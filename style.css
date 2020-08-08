@@ -25,7 +25,8 @@ p {
 
 h1,
 .header-action {
-  text-shadow: 1px 2px 6px white;
+  color: #e4e4e4;
+  text-shadow: 1px 2px 6px black;
   margin: 0;
 }
 
@@ -164,7 +165,7 @@ footer {
 /* ***** */
 .arena img {
   width: 100%;
-  border: 0.3rem outset bisque;
+  border: 0.3rem ridge #333333;
   /* box-shadow: 0px 0px 30px 0px bisque; */
   margin-bottom: 0.3rem;
 }
@@ -263,6 +264,8 @@ progress:before {
   left: 0;
   right: 0;
   color: #333333;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 progress::-webkit-progress-bar {
@@ -271,7 +274,7 @@ progress::-webkit-progress-bar {
 
 .player-health::-webkit-progress-value,
 .enemy-health::-webkit-progress-value {
-  background: brown;
+  background: tomato;
 }
 .player-energy::-webkit-progress-value,
 .enemy-energy::-webkit-progress-value {

@@ -8,6 +8,7 @@
  * calibrate HP MP etc
  * add combat sounds
  * add animation effect on special attack
+ * add animation on death
  * add ending recap score
  * add LEGEND
  **/
