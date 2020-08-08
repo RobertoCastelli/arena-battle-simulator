@@ -120,6 +120,7 @@ const getEnemy = () => {
 // SETS PLAYER IN THE ARENA
 // ------------------------
 const setPlayer = (name) => {
+  audioFight.play(); // <-< UNCOMMENT FOR MUSIC ON/OFF
   getPlayer(name);
   setPlayerStats();
 };
@@ -128,7 +129,6 @@ const setPlayer = (name) => {
 // SETS ENEMEY IN THE ARENA
 // ------------------------
 const setEnemy = () => {
-  audioFight.play(); // <-< UNCOMMENT FOR MUSIC ON/OFF
   getEnemy();
   setEnemyStats();
   // CLEAR SCORE AFTER SUMMONING ENEMY
@@ -296,6 +296,7 @@ const enemyAttack = () => {
   // START BATTLE ANIMATION
   document.getElementById("enemy-avatar").classList.add("move-left"); //FIXME:
   // GENERATE HIT SOUND
+  // GENERATE HIT SOUND
   audioPunch.play();
   // GET DAMAGE + RANDOM
   let enemyDamage = diceRoll(selectedEnemy[0].strength);
@@ -310,8 +311,9 @@ const enemyAttack = () => {
 // --------------
 const checkDeath = (champion) => {
   if (champion[0].health <= 0) {
+    getArena.classList.add("shake");
     champion[0].health = 0;
-    champion[0].icon = "./images/rip.png";
+    champion[0].icon = "./images/rip.jpg";
     champion[0].status = "dead";
     champion[0].avatar = "";
     // IF PLAYER DIES, RESTART

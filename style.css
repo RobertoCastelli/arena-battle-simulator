@@ -11,6 +11,8 @@ html {
   padding: 0;
   background: url("./images/bgarena.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
+  overflow-y: hidden;
 }
 
 * {
@@ -36,19 +38,23 @@ h4 {
 
 footer {
   color: white;
+  flex-shrink: 1;
 }
 
 /* ************************** */
 /* START CHAMPION SELECT MENU */
 /* ************************** */
 .champion-list {
-  list-style: none;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
 }
 
 .champion-item {
   position: relative;
+  flex-grow: 1;
   margin: 1rem;
   cursor: pointer;
 }
@@ -64,9 +70,10 @@ footer {
 
 .champion-image {
   width: 90px;
+  height: 90px;
   border-radius: 3rem;
   border: 1px solid #333333;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .champion-image:hover {
@@ -210,13 +217,13 @@ footer {
   position: absolute;
   width: 150px;
   top: -250px;
-  left: 30px;
+  left: 40px;
 }
 
 .enemy-avatar {
   position: absolute;
   top: -250px;
-  left: -30px;
+  left: -50px;
 }
 
 .player-description {
