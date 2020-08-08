@@ -218,6 +218,14 @@ footer {
   left: -30px;
 }
 
+.player-description {
+  margin-bottom: 100px;
+}
+
+hr {
+  margin: 15px 0;
+}
+
 .enemy-icon,
 .player-icon {
   width: 100px;
@@ -255,7 +263,6 @@ progress:before {
   left: 0;
   right: 0;
   color: #333333;
-  font-weight: bold;
 }
 
 progress::-webkit-progress-bar {
@@ -348,5 +355,19 @@ progress::-webkit-progress-bar {
   }
   100% {
     transform: translate(0, 0);
+  }
+}
+
+.appear {
+  animation-name: appear;
+  animation-duration: 3s;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0.1;
+  }
+  to {
+    opacity: 1;
   }
 }

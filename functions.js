@@ -79,7 +79,7 @@ const setPlayerModal = () => {
     <h2 class="player-name">${player.name}</h2>
     <img class="player-icon" src="${player.icon}"></img>
     <h3>${player.classe}</h3>
-    <p>${player.description}</p>
+    <p class="player-description">${player.description}</p>
     <button class="btn-start" onclick="setGameStart('${player.name}')">Select</button>
     <button class="btn-restart" onclick="closePlayerModal()">Cancel</button>
     `;
@@ -97,11 +97,11 @@ const setArena = () => {
   getArena.style.visibility = "visible";
   getStats.style.visibility = "visible";
   // DISPLAY ARENA DEFAULT TEXT
-  getScoreCounterHeader.innerHTML = "SCORE";
+  getScoreCounterHeader.innerHTML = "ARENA LEVEL";
   getScoreLogHeader.innerHTML = "COMBAT LOGS";
   getEnemyScore.innerHTML = "...";
   getPlayerScore.innerHTML = "...";
-  getScoreResultHeader.innerHTML = "ARENA SPEAKER";
+  getScoreResultHeader.innerHTML = `<hr>`;
   getScoreResult.innerHTML = "summon a Demon!";
 };
 
@@ -194,7 +194,7 @@ const setPlayerStats = () => {
   playerNew = selectedPlayer.map((player) => {
     return `
       <img class="player-icon" src="${player.icon}"></img>
-      <img id="player-avatar" class="player-avatar" src="${player.avatar}"></img>
+      <img id="player-avatar" class="player-avatar appear" src="${player.avatar}"></img>
       <h3 class="player-name">${player.name}</h3>
       <label for="player-health">HP</label>
       <progress 
@@ -236,7 +236,7 @@ const setEnemyStats = () => {
   enemyNew = selectedEnemy.map((enemy) => {
     return `
       <img class="enemy-icon" src="${enemy.icon}"></img>
-      <img id="enemy-avatar" class="enemy-avatar" src="${enemy.avatar}"></img>
+      <img id="enemy-avatar" class="enemy-avatar appear" src="${enemy.avatar}"></img>
       <h3>${enemy.name}</h3>
       <label for="enemy-health">HP</label>
       <progress 
