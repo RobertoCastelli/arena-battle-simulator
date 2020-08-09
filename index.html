@@ -3,7 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- FAICON -->
     <link rel="shortcut icon" href="#" />
+
+    <!-- FONT AWSOME -->
+    <script
+      src="https://kit.fontawesome.com/81b668545a.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css" />
 
     <title>ABS</title>
@@ -78,14 +88,22 @@
             />
             <h3 class="enemy-name">???</h3>
             <div class="progress-bar">
-              <label for="enemmy-health">HP</label>
-              <progress class="enemy-health"></progress>
-              <label for="enemy.energy">EP</label>
-              <progress class="enemy-energy"></progress>
-              <label for="enemy-strength">ST</label>
-              <progress class="enemy-strength"></progress>
-              <label for="enemy-speed">SP</label>
-              <progress class="enemy-speed"></progress>
+              <!-- <label for="enemmy-health">HP</label> -->
+              <progress class="enemy-health">HP</progress>
+              <!-- <label for="enemy.energy">EP</label> -->
+              <progress class="enemy-energy">EP</progress>
+              <label for="enemy-strength">
+                <i class="fas fa-fist-raised fa-2x"></i
+              ></label>
+              <div class="enemy-strength"></div>
+              <label for="enemy.defence"
+                ><i class="fas fa-shield-alt fa-2x"></i
+              ></label>
+              <div class="enemy-defence"></div>
+              <label for="enemy-speed"
+                ><i class="fas fa-running fa-2x"></i
+              ></label>
+              <div class="enemy-speed"></div>
             </div>
           </div>
         </div>

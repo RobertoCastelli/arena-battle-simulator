@@ -1,7 +1,10 @@
 /**
  * TODO:
  * calibrate HP MP etc
+ * add random sounds when hitting
+ * add defence stats
  * add who starts to attack based on speed
+ * add better rules section
  * add ending scene
  * add ending recap score
  * add animation progress bar
@@ -164,7 +167,7 @@ const getEnemy = () => {
 const setPlayer = (name) => {
   getPlayer(name);
   setPlayerStats();
-  audioFight.play(); // <-< UNCOMMENT FOR MUSIC ON/OFF
+  // audioFight.play(); // <-< UNCOMMENT FOR MUSIC ON/OFF
   // START PLAYER APPEAR ANIMATION
   document.getElementById("player-avatar").classList.add("appear"); //FIXME:
 };
@@ -195,35 +198,44 @@ const setPlayerStats = () => {
     <img class="player-icon" src="${player.icon}"></img>
     <img id="player-avatar" class="player-avatar" src="${player.avatar}"></img>
     <h3 class="player-name">${player.name}</h3>
-    <label for="player-health">HP</label>
-    <progress 
-    class="player-health" 
-    value="${player.health}" 
-    max="100"
-    data-lable="${player.health}">
-    </progress>
-    <label for="player-energy">EP</label>
-    <progress 
-    class="player-energy" 
-    value="${player.energy}" 
-    max="100"
-    data-lable="${player.energy}">
-    </progress>
-    <label for="player-strength">ST</label>
-    <progress 
-    class="player-strength" 
-    value="${player.strength}" 
-    max="100" 
-    data-lable="${player.strength}">
-    </progress>
-    <label for="player-speed">SP</label>
-    <progress 
-    class="player-speed" 
-    value="${player.speed}" 
-    max="100" 
-    data-lable="${player.speed}">
-    </progress>
-    `;
+    <div class="progress-bar">
+   
+      <progress 
+        class="player-health" 
+        value="${player.health}" 
+        max="100"
+        data-lable="${player.health}">
+      </progress>
+  
+      <progress 
+        class="player-energy" 
+        value="${player.energy}" 
+      max="100"
+        data-lable="${player.energy}">
+      </progress>
+      <label for="player-strength"><i class="fas fa-fist-raised fa-2x"></i></label>
+      <div 
+        class="player-strength" 
+        value="${player.strength}" 
+        max="100" 
+       >${player.strength}
+      </div>
+      <label for="player-defence"><i class="fas fa-shield-alt fa-2x"></i></label>
+      <div 
+        class="player-defence" 
+        value="${player.defence}" 
+        max="100" 
+        >${player.defence}
+      </div>  
+      <label for="player-speed"><i class="fas fa-running fa-2x"></i></label>
+      <div 
+        class="player-speed" 
+        value="${player.speed}" 
+        max="100" 
+        >${player.speed}
+      </div>
+    </div>
+   `;
   });
   getPlayerStats.innerHTML = playerNew;
 };
@@ -237,34 +249,41 @@ const setEnemyStats = () => {
     <img class="enemy-icon" src="${enemy.icon}"></img>
     <img id="enemy-avatar" class="enemy-avatar" src="${enemy.avatar}"></img>
     <h3>${enemy.name}</h3>
-    <label for="enemy-health">HP</label>
-    <progress 
-    class="enemy-health" 
-    value="${enemy.health}" 
-    max="100" 
-    data-lable="${enemy.health}">
-    </progress>
-    <label for="enemy-energy">EP</label>
-    <progress 
-    class="enemy-energy" 
-    value="${enemy.energy}" 
-    max="100" 
-    data-lable="${enemy.energy}">
-    </progress>
-    <label for="enemy-strength">ST</label>
-    <progress 
-    class="enemy-strength" 
-    value="${enemy.strength}" 
-    max="100" 
-    data-lable="${enemy.strength}">
-    </progress>
-    <label for="enemy-speed">SP</label>
-    <progress 
-    class="enemy-speed" 
-    value="${enemy.speed}" 
-    max="100" 
-    data-lable="${enemy.speed}">
-    </progress>
+    <div class="progress-bar">
+      <progress 
+        class="enemy-health" 
+        value="${enemy.health}" 
+        max="100" 
+        data-lable="${enemy.health}">
+      </progress>
+      <progress 
+        class="enemy-energy" 
+        value="${enemy.energy}" 
+        max="100" 
+        data-lable="${enemy.energy}">
+      </progress>
+      <label for="enemy-strength"><i class="fas fa-fist-raised fa-2x"></i></label>
+      <div
+      class="enemy-strength" 
+        value="${enemy.strength}" 
+        max="100" 
+        >${enemy.strength}
+      </div>
+       <label for="enemy-defence"><i class="fas fa-shield-alt fa-2x"></i></label>
+      <div
+      class="enemy-defence" 
+        value="${enemy.defence}" 
+        max="100" 
+        >${enemy.defence}
+      </div>
+      <label for="enemy-speed"><i class="fas fa-running fa-2x"></i></label>
+      <div 
+        class="enemy-speed" 
+        value="${enemy.speed}" 
+        max="100" 
+        >${enemy.speed}
+      </div>
+      </div>
     `;
   });
   getEnemyStats.innerHTML = enemyNew;
@@ -337,10 +356,9 @@ const playerAttack = () => {
   let energyConsume = 10;
   let playerDamage = diceRoll(damage);
   // INJECT HTML HIT SCORE
-  getPlayerScore.innerHTML = `${selectedPlayer[0].name} hits for: ${playerDamage}`;
+  getPlayerScore.innerHTML = `${selectedPlayer[0].name} hits for: <b>${playerDamage}</b>`;
   // UPDATE HP
   selectedEnemy[0].health -= playerDamage;
-  selectedPlayer[0].energy -= energyConsume;
 };
 
 // *************************
@@ -354,7 +372,7 @@ const enemyAttack = () => {
   // GET DAMAGE + RANDOM
   let enemyDamage = diceRoll(selectedEnemy[0].strength);
   // INJECT HTML HIT SCORE
-  getEnemyScore.innerHTML = `${selectedEnemy[0].name} hits for: ${enemyDamage}`;
+  getEnemyScore.innerHTML = `${selectedEnemy[0].name} hits for: <b>${enemyDamage}</b>`;
   // UPDATE HP
   selectedPlayer[0].health -= enemyDamage;
 };
