@@ -12,40 +12,41 @@
  * |INDICE|
  * |~~~~~~|
  *
- * ~~~~~~~~~~~~~~~~~~~~~~~|
- * ------ USEFUL FUNCTIONS|
- * ~~~~~~~~~~~~~~~~~~~~~~~|
+ * ~~~~~~~~~~~~~~~~~~~~~~~~|
+ * --- USEFUL FUNCTIONS ---|
+ * ~~~~~~~~~~~~~~~~~~~~~~~~|
  * 1. Restart Game
  * 2. Dice Roll
  * 3. Set a Delay
  * 4. Stop and Reset Audio
- * ~~~~~~~~~~~~~~~~~~~|
- * ------ SELECT SCENE|
- * ~~~~~~~~~~~~~~~~~~~|
- * 5. Show Champion List from Data
- * 6. Get Champion from List
- * 7. Open Modal
- * 8. Close Modal
- * 9. Modal Template
- * ~~~~~~~~~~~~~~~~~~~|
- * ------ BATTLE SCENE|
- * ~~~~~~~~~~~~~~~~~~~|
- * 10. Set the Arena
- * 11. Get Enemy from Alive Array
- * 12. Set Player in the Arena
- * 13. Set Enemy in the Arena
- * 14. Display Player Stats
- * 15. Display Enemy Stats
- * 16. Display Buttons at Start
- * 17. Display Buttons when Dead
- * 18. Display Buttons when Fighting
- * ~~~~~~~~~~~~~~~~~~~~~|
- * ------ FIGHTING SCENE|
- * ~~~~~~~~~~~~~~~~~~~~~|
- * 19. Player Attack
- * 20. Enemy Attack
- * 21. Death Sequence
- * 22. Check for Vicotory
+ * 5. Disaply Rules of the Game
+ * ~~~~~~~~~~~~~~~~~~~~|
+ * --- SELECT SCENE ---|
+ * ~~~~~~~~~~~~~~~~~~~~|
+ * 6. Show Champion List from Data
+ * 7. Get Champion from List
+ * 8. Open Modal
+ * 9. Close Modal
+ * 10. Modal Template
+ * ~~~~~~~~~~~~~~~~~~~~|
+ * --- BATTLE SCENE ---|
+ * ~~~~~~~~~~~~~~~~~~~~|
+ * 11. Set the Arena
+ * 12. Get Enemy from Alive Array
+ * 13. Set Player in the Arena
+ * 14. Set Enemy in the Arena
+ * 15. Display Player Stats
+ * 16. Display Enemy Stats
+ * 17. Display Buttons at Start
+ * 18. Display Buttons when Dead
+ * 19. Display Buttons when Fighting
+ * ~~~~~~~~~~~~~~~~~~~~~~|
+ * --- FIGHTING SCENE ---|
+ * ~~~~~~~~~~~~~~~~~~~~~~|
+ * 20. Player Attack
+ * 21. Enemy Attack
+ * 22. Death Sequence
+ * 23. Check for Vicotory
  **/
 
 // ***************
@@ -73,6 +74,12 @@ const resetAudio = () => {
   audioFight.pause();
   audioFight.currentTime = 0;
 };
+
+// *************************
+// 5. SHOW RULES OF THE GAME
+// -------------------------
+const rules = () =>
+  alert("Get to the top og the tower. You got only one life. NdR");
 
 // *******************************
 // 5. SHOW CHAMPION LIST FROM DATA
@@ -284,6 +291,7 @@ const setStartScene = () => {
     <p>Get ready!</p>
     <button class="btn-start" onclick="setEnemy()">summon demon</button>
     <button class="btn-restart" onclick="restartGame()">restart game</button>
+    <button class="btn-start" onclick="rules()">game rules</button>
     `;
   }
 };
