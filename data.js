@@ -91,7 +91,7 @@ const mobs = [
     name: "Skeletor",
     type: "enemy",
     health: 100,
-    energy: 1000,
+    energy: 100,
     strength: 100,
     defence: 100,
     speed: 100,
