@@ -123,6 +123,7 @@ const setPlayer = (name) => {
   audioFight.play(); // <-< UNCOMMENT FOR MUSIC ON/OFF
   getPlayer(name);
   setPlayerStats();
+  document.getElementById("player-avatar").classList.add("appear"); //FIXME:
 };
 
 // ************************
@@ -136,6 +137,9 @@ const setEnemy = () => {
   getPlayerScore.innerHTML = "...";
   getEnemyScore.innerHTML = "...";
   setFightScene();
+  // START APPEAR ANIMATION
+  document.getElementById("enemy-avatar").classList.add("appear"); //FIXME:
+  document.getElementById("player-avatar").classList.remove("move-right"); //FIXME:
 };
 
 // ************************
@@ -143,7 +147,7 @@ const setEnemy = () => {
 // ------------------------
 const setStartScene = () => {
   // REMOVE ALL ADDITIONAL ANIMATION CLASSES
-  document.getElementById("player-avatar").classList.remove("move-right");
+  // document.getElementById("player-avatar").classList.remove("move-right");
   // UPDATE COUNTER
   getAliveEnemy = mobs.filter((mob) => mob.status === "alive");
   getScore.innerHTML = mobs.length - getAliveEnemy.length;
@@ -196,7 +200,7 @@ const setPlayerStats = () => {
   playerNew = selectedPlayer.map((player) => {
     return `
       <img class="player-icon" src="${player.icon}"></img>
-      <img id="player-avatar" class="player-avatar appear" src="${player.avatar}"></img>
+      <img id="player-avatar" class="player-avatar" src="${player.avatar}"></img>
       <h3 class="player-name">${player.name}</h3>
       <label for="player-health">HP</label>
       <progress 
@@ -238,7 +242,7 @@ const setEnemyStats = () => {
   enemyNew = selectedEnemy.map((enemy) => {
     return `
       <img class="enemy-icon" src="${enemy.icon}"></img>
-      <img id="enemy-avatar" class="enemy-avatar appear" src="${enemy.avatar}"></img>
+      <img id="enemy-avatar" class="enemy-avatar" src="${enemy.avatar}"></img>
       <h3>${enemy.name}</h3>
       <label for="enemy-health">HP</label>
       <progress 
@@ -278,15 +282,19 @@ const setEnemyStats = () => {
 // ----------------------
 const playerAttack = () => {
   // START BATTLE ANIMATION
+  document.getElementById("player-avatar").classList.remove("appear"); //FIXME:
   document.getElementById("player-avatar").classList.add("move-right"); //FIXME:
   // GENERATE HIT SOUND
   audioSword.play();
-  // GET DAMAGE + RANDOM
-  let playerDamage = diceRoll(selectedPlayer[0].strength);
+  // CALCULATE MAX DAMAGE
+  let damage = selectedPlayer[0].strength;
+  let energyConsume = 10;
+  let playerDamage = diceRoll(damage);
   // INJECT HTML HIT SCORE
   getPlayerScore.innerHTML = `${selectedPlayer[0].name} hits for: ${playerDamage}`;
   // UPDATE HP
   selectedEnemy[0].health -= playerDamage;
+  selectedPlayer[0].energy -= energyConsume;
 };
 
 // *********************
@@ -295,6 +303,7 @@ const playerAttack = () => {
 const enemyAttack = () => {
   // START BATTLE ANIMATION
   document.getElementById("enemy-avatar").classList.add("move-left"); //FIXME:
+
   // GENERATE HIT SOUND
   // GENERATE HIT SOUND
   audioPunch.play();
@@ -311,6 +320,7 @@ const enemyAttack = () => {
 // --------------
 const checkDeath = (champion) => {
   if (champion[0].health <= 0) {
+    // SHAKE SCREEN IF DEAD
     getArena.classList.add("shake");
     champion[0].health = 0;
     champion[0].icon = "./images/rip.jpg";

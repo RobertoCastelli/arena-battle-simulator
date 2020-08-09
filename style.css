@@ -367,10 +367,11 @@ progress::-webkit-progress-bar {
     transform: translate(0, 0);
   }
 }
-/* 
+
 .appear {
   animation-name: appear;
   animation-duration: 3s;
+  animation-iteration-count: 1;
 }
 
 @keyframes appear {
@@ -380,4 +381,4 @@ progress::-webkit-progress-bar {
   to {
     opacity: 1;
   }
-} */
+}
