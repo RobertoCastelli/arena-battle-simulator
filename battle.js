@@ -5,9 +5,10 @@ const attack = () => {
   playerAttack();
   checkDeath(selectedEnemy);
   setEnemyStats();
-  // STOP ENEMY HIT IF ENEMY DIES
+
+  // STOP ENEMY HIT DEAD
   selectedEnemy[0].status !== "dead" &&
-    setDelay(3000).then(() => {
+    setDelay(2000).then(() => {
       enemyAttack();
       checkDeath(selectedPlayer);
       setPlayerStats();
