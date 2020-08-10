@@ -58,23 +58,32 @@ footer {
 .player-strength,
 .enemy-strength {
   grid-area: st;
+  font-weight: bold;
+  margin-top: 0.3rem;
 }
 .player-defence,
 .enemy-defence {
   grid-area: df;
+  font-weight: bold;
+  margin-top: 0.3rem;
 }
 .player-speed,
 .enemy-speed {
   grid-area: sp;
-  align-self: baseline;
+  font-weight: bold;
+  margin-top: 0.3rem;
 }
 .player-health,
 .enemy-health {
   grid-area: hp;
+  font-weight: bold;
+  margin-top: 0.3rem;
 }
 .player-energy,
 .enemy-energy {
   grid-area: ep;
+  font-weight: bold;
+  margin-top: 0.3rem;
 }
 
 /* ************************** */
@@ -292,6 +301,11 @@ hr {
   height: 2rem;
   margin: auto;
   border: 0.2rem inset bisque;
+}
+.score-result {
+  color: red;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 progress {

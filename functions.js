@@ -61,7 +61,7 @@ const restartGame = () =>
 // ************
 // 2. DICE ROLL
 // ------------
-const diceRoll = (power) => Math.floor(Math.random() * power);
+const diceRoll = (min, max) => Math.floor(Math.random() * (max - min) + min);
 
 // **************
 // 3. SET A DELAY
@@ -156,7 +156,7 @@ const setArena = () => {
 // ----------------------------
 const getEnemy = () => {
   // GET A RANDOM ENEMY FROM ALIVE POOL
-  let randomPick = diceRoll(getAliveEnemy.length);
+  let randomPick = diceRoll(0, getAliveEnemy.length);
   selectedEnemy = new Array(getAliveEnemy[randomPick]);
   return selectedEnemy;
 };
@@ -344,14 +344,19 @@ const setFightScene = () => {
 // 19. DAMAGE CALCULATION
 // ----------------------
 const damageCalculation = (attacker, defender) =>
-  (damage = attacker[0].strength - defender[0].defence + 1 + diceRoll(10));
+  (damage =
+    Math.abs(attacker[0].strength - defender[0].defence) + diceRoll(1, 10));
 
+// ********************
+// 19. CHECK INITIATIVE
+// --------------------
 const checkInitiative = () => {
   setEnemy();
-  let playerSpeed = selectedPlayer[0].speed + diceRoll(10);
-  let enemySpeed = selectedEnemy[0].speed + diceRoll(10);
+  let playerSpeed = selectedPlayer[0].speed + diceRoll(1, 10);
+  let enemySpeed = selectedEnemy[0].speed + diceRoll(1, 10);
   console.log(playerSpeed, enemySpeed);
   if (playerSpeed > enemySpeed) {
+    document.getElementById("player-avatar").classList.remove("move-right"); //FIXME:
     getScoreResult.innerHTML = "You win initiative";
   } else {
     getScoreResult.innerHTML = "You lose initiative";
@@ -395,9 +400,9 @@ const enemyAttack = () => {
   selectedPlayer[0].health -= damage;
 };
 
-// ******************
-// 21. DEATH SEQUENCE
-// ------------------
+// ************************
+// 21. CHECK DEATH & DISPLAY THE TEXT
+// ------------------------
 const checkDeath = (champion) => {
   if (champion[0].health <= 0) {
     // SHAKE SCREEN IF DEAD
@@ -415,21 +420,24 @@ const checkDeath = (champion) => {
 };
 
 // ************************
-// 22. CHECK VICOTRY STATUS
+// 22. CHECK BATTLE STATUS
 // ------------------------
-const checkVictory = () => {
+const checkBattleStatus = () => {
+  // PLAYER DIES TEXT
   if (selectedPlayer[0].health <= 0 && selectedEnemy[0].health > 0) {
     getScoreResult.innerHTML = `${selectedEnemy[0].name} slays ${selectedPlayer[0].name}`;
     setTimeout(() => {
       getScoreResult.innerHTML = "You are dead";
       resetAudio();
     }, 2500);
+    // ENEMY DIES TEXT
   } else if (selectedEnemy[0].health <= 0 && selectedPlayer[0].health > 0) {
     getScoreResult.innerHTML = `${selectedPlayer[0].name} slays ${selectedEnemy[0].name}`;
     setTimeout(() => {
       getScoreResult.innerHTML = "Make your choice!";
     }, 2500);
+    // NOONE DIES SEQUENCE
   } else {
-    getScoreResult.innerHTML = `Your turn!`;
+    getScoreResult.innerHTML = `Shed some blood`;
   }
 };
