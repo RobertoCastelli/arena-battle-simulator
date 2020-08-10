@@ -186,7 +186,6 @@ const setEnemy = () => {
   // START ENEMYY APPEAR ANIMATION
   // REMOVE PLAYER ATTACK ANIMATION
   document.getElementById("enemy-avatar").classList.add("appear"); //FIXME:
-  document.getElementById("player-avatar").classList.remove("move-right"); //FIXME:
 };
 
 // ************************
@@ -308,7 +307,7 @@ const setStartScene = () => {
   } else {
     getHeaderActions.innerHTML = `
     <p>Get ready!</p>
-    <button class="btn-start" onclick="setEnemy()">summon demon</button>
+    <button class="btn-start" onclick="checkInitiative()">summon demon</button>
     <button class="btn-restart" onclick="restartGame()">restart game</button>
     <button class="btn-start" onclick="rules()">game rules</button>
     `;
@@ -333,12 +332,31 @@ const setFightScene = () => {
   // ADD FIGHTIN BTN SET
   getHeaderActions.innerHTML = `
   <p>Make your move!</p>
-  <button class="btn-attack" onclick="attack()">attack enemy</button>
+  <button class="btn-attack" onclick="attackPlayerSequence()">attack enemy</button>
   <button class="btn-defend" onclick="attack()">defend stance</button>
   <button class="btn-rest" onclick="attack()">rest stance</button>
   <button class="btn-special" onclick="attack()">special attack</button>
   <button class="btn-restart" onclick="restartGame()">restart game</button>
   `;
+};
+
+// **********************
+// 19. DAMAGE CALCULATION
+// ----------------------
+const damageCalculation = (attacker, defender) =>
+  (damage = attacker[0].strength - defender[0].defence + 1 + diceRoll(10));
+
+const checkInitiative = () => {
+  setEnemy();
+  let playerSpeed = selectedPlayer[0].speed + diceRoll(10);
+  let enemySpeed = selectedEnemy[0].speed + diceRoll(10);
+  console.log(playerSpeed, enemySpeed);
+  if (playerSpeed > enemySpeed) {
+    getScoreResult.innerHTML = "You win initiative";
+  } else {
+    getScoreResult.innerHTML = "You lose initiative";
+    enemyAttackSequence();
+  }
 };
 
 // **************************
@@ -352,29 +370,29 @@ const playerAttack = () => {
   // GENERATE HIT SOUND
   audioSword.play();
   // CALCULATE MAX DAMAGE
-  let damage = selectedPlayer[0].strength;
-  let energyConsume = 10;
-  let playerDamage = diceRoll(damage);
+  damageCalculation(selectedPlayer, selectedEnemy);
   // INJECT HTML HIT SCORE
-  getPlayerScore.innerHTML = `${selectedPlayer[0].name} hits for: <b>${playerDamage}</b>`;
+  getPlayerScore.innerHTML = `${selectedPlayer[0].name} hits for: <b>${damage}</b>`;
   // UPDATE HP
-  selectedEnemy[0].health -= playerDamage;
+  selectedEnemy[0].health -= damage;
 };
 
 // *************************
 // 20. ENEMY ATTACK SEQUENCE
 //-------------------------
 const enemyAttack = () => {
+  // REMOVE ENEMY APPEAR ANIMATION
   // START ENEMY ATTACK ANIMATION
   document.getElementById("enemy-avatar").classList.add("move-left"); //FIXME:
+  document.getElementById("enemy-avatar").classList.remove("appear"); //FIXME:
   // GENERATE HIT SOUND
   audioPunch.play();
   // GET DAMAGE + RANDOM
-  let enemyDamage = diceRoll(selectedEnemy[0].strength);
+  damageCalculation(selectedEnemy, selectedPlayer);
   // INJECT HTML HIT SCORE
-  getEnemyScore.innerHTML = `${selectedEnemy[0].name} hits for: <b>${enemyDamage}</b>`;
+  getEnemyScore.innerHTML = `${selectedEnemy[0].name} hits for: <b>${damage}</b>`;
   // UPDATE HP
-  selectedPlayer[0].health -= enemyDamage;
+  selectedPlayer[0].health -= damage;
 };
 
 // ******************
@@ -412,6 +430,6 @@ const checkVictory = () => {
       getScoreResult.innerHTML = "Make your choice!";
     }, 2500);
   } else {
-    getScoreResult.innerHTML = `Keep Fighting!`;
+    getScoreResult.innerHTML = `Your turn!`;
   }
 };

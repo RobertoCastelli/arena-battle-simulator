@@ -30,6 +30,7 @@ let getPlayerName = document.querySelector(".player-name");
 let getPlayerHealth = document.querySelector(".player-health");
 let getPlayerEnergy = document.querySelector(".player-energy");
 let getPlayerStrength = document.querySelector(".playertr-strength");
+let getPlayerSpeed = document.querySelector("player-speed");
 let getPlayerAvatar = document.getElementById("player-avatar");
 
 // *************
@@ -42,4 +43,5 @@ let getEnemyName = document.querySelector(".enemy-name");
 let getEnemyHealth = document.querySelector(".enemy-health");
 let getEnemyEnergy = document.querySelector(".enemy-energy");
 let getEnemyStrength = document.querySelector(".enemy-strength");
+let getEnemySpeed = document.querySelector("enemy-speed");
 let getEnemyAvatar = document.getElementById("enemy-avatar");
