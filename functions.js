@@ -1,9 +1,8 @@
 /**
  * TODO:
  * calibrate HP MP etc
+ * BUTTON DEF SPECIAL ATK
  * add random sounds when hitting
- * add defence stats
- * add who starts to attack based on speed
  * add better rules section
  * add ending scene
  * add ending recap score
@@ -26,30 +25,15 @@
  * ~~~~~~~~~~~~~~~~~~~~|
  * --- SELECT SCENE ---|
  * ~~~~~~~~~~~~~~~~~~~~|
- * 6. Show Champion List from Data
- * 7. Get Champion from List
- * 8. Open Modal
- * 9. Close Modal
- * 10. Modal Template
+
  * ~~~~~~~~~~~~~~~~~~~~|
  * --- BATTLE SCENE ---|
  * ~~~~~~~~~~~~~~~~~~~~|
- * 11. Set the Arena
- * 12. Get Enemy from Alive Array
- * 13. Set Player in the Arena
- * 14. Set Enemy in the Arena
- * 15. Display Player Stats
- * 16. Display Enemy Stats
- * 17. Display Buttons at Start
- * 18. Display Buttons when Dead
- * 19. Display Buttons when Fighting
+
  * ~~~~~~~~~~~~~~~~~~~~~~|
  * --- FIGHTING SCENE ---|
  * ~~~~~~~~~~~~~~~~~~~~~~|
- * 20. Player Attack
- * 21. Enemy Attack
- * 22. Death Sequence
- * 23. Check for Vicotory
+y
  **/
 
 // ***************
@@ -179,12 +163,10 @@ const setEnemy = () => {
   getEnemy();
   setEnemyStats();
   // CLEAR SCORE AFTER SUMMONING ENEMY
-  getScoreResult.innerHTML = "start fighting!";
   getPlayerScore.innerHTML = "...";
   getEnemyScore.innerHTML = "...";
   setFightScene();
   // START ENEMYY APPEAR ANIMATION
-  // REMOVE PLAYER ATTACK ANIMATION
   document.getElementById("enemy-avatar").classList.add("appear"); //FIXME:
 };
 
@@ -198,14 +180,12 @@ const setPlayerStats = () => {
     <img id="player-avatar" class="player-avatar" src="${player.avatar}"></img>
     <h3 class="player-name">${player.name}</h3>
     <div class="progress-bar">
-   
       <progress 
         class="player-health" 
         value="${player.health}" 
         max="100"
         data-lable="${player.health}">
       </progress>
-  
       <progress 
         class="player-energy" 
         value="${player.energy}" 
@@ -293,7 +273,7 @@ const setEnemyStats = () => {
 // ----------------------------
 const setStartScene = () => {
   // REMOVE ALL ADDITIONAL ANIMATION CLASSES
-  // document.getElementById("player-avatar").classList.remove("move-right");
+  document.getElementById("player-avatar").classList.remove("move-right"); //FIXME:
   // UPDATE COUNTER
   getAliveEnemy = mobs.filter((mob) => mob.status === "alive");
   getScore.innerHTML = mobs.length - getAliveEnemy.length;
@@ -332,10 +312,10 @@ const setFightScene = () => {
   // ADD FIGHTIN BTN SET
   getHeaderActions.innerHTML = `
   <p>Make your move!</p>
-  <button class="btn-attack" onclick="attackPlayerSequence()">attack enemy</button>
-  <button class="btn-defend" onclick="attack()">defend stance</button>
-  <button class="btn-rest" onclick="attack()">rest stance</button>
-  <button class="btn-special" onclick="attack()">special attack</button>
+  <button class="btn-attack" onclick="playerAttackSequence()">attack enemy</button>
+  <button class="btn-defend" onclick="playerDefenceSequence()">defend stance</button>
+  <button class="btn-rest" onclick="playerStanceSequence()">rest stance</button>
+  <button class="btn-special" onclick="playerSpecialSequence()">special attack</button>
   <button class="btn-restart" onclick="restartGame()">restart game</button>
   `;
 };
@@ -343,9 +323,15 @@ const setFightScene = () => {
 // **********************
 // 19. DAMAGE CALCULATION
 // ----------------------
-const damageCalculation = (attacker, defender) =>
-  (damage =
-    Math.abs(attacker[0].strength - defender[0].defence) + diceRoll(1, 10));
+
+const damageCalculation = (attacker, defender) => {
+  damage = Math.abs(
+    Math.floor(
+      attacker[0].strength - (attacker[0].strength * defender[0].defence) / 100
+    )
+  );
+  console.log(damage);
+};
 
 // ********************
 // 19. CHECK INITIATIVE
@@ -356,7 +342,6 @@ const checkInitiative = () => {
   let enemySpeed = selectedEnemy[0].speed + diceRoll(1, 10);
   console.log(playerSpeed, enemySpeed);
   if (playerSpeed > enemySpeed) {
-    document.getElementById("player-avatar").classList.remove("move-right"); //FIXME:
     getScoreResult.innerHTML = "You win initiative";
   } else {
     getScoreResult.innerHTML = "You lose initiative";
@@ -388,8 +373,8 @@ const playerAttack = () => {
 const enemyAttack = () => {
   // REMOVE ENEMY APPEAR ANIMATION
   // START ENEMY ATTACK ANIMATION
-  document.getElementById("enemy-avatar").classList.add("move-left"); //FIXME:
   document.getElementById("enemy-avatar").classList.remove("appear"); //FIXME:
+  document.getElementById("enemy-avatar").classList.add("move-left"); //FIXME:
   // GENERATE HIT SOUND
   audioPunch.play();
   // GET DAMAGE + RANDOM

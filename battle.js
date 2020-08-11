@@ -1,7 +1,7 @@
 // **********************
 // PLAYER ATTACK SEQUNECE
 // ----------------------
-const attackPlayerSequence = () => {
+const playerAttackSequence = () => {
   playerAttack();
   checkDeath(selectedEnemy);
   setEnemyStats();
@@ -9,7 +9,6 @@ const attackPlayerSequence = () => {
   selectedEnemy[0].status !== "dead" &&
     setDelay(1000).then(() => {
       enemyAttackSequence();
-      // checkBattleStatus();
     });
   // CHECK VICTORY Fn IF ENEMY IS ALREADY DEAD
   checkBattleStatus();
