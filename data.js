@@ -8,7 +8,7 @@ const players = [
     health: 100,
     energy: 80,
     strength: 85,
-    defence: 100,
+    defence: 50,
     speed: 100,
     status: "alive",
     description: "High health - Low speed",

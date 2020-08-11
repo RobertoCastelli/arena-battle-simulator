@@ -423,6 +423,6 @@ const checkBattleStatus = () => {
     }, 2500);
     // NOONE DIES SEQUENCE
   } else {
-    getScoreResult.innerHTML = `Shed some blood`;
+    getScoreResult.innerHTML = ``;
   }
 };
