@@ -2,8 +2,10 @@ const sounds = [
   audioPunch,
   audioPunch1,
   audioPunch2,
-  audioPunches,
   audioSpecial,
+  audioSword,
+  audioSword1,
+  audioSlap,
 ];
 
 const players = [
