@@ -7,9 +7,9 @@ const checkInitiative = () => {
   let enemySpeed = selectedEnemy[0].speed + diceRoll(1, 10);
   console.log(playerSpeed, enemySpeed);
   if (playerSpeed > enemySpeed) {
-    getScoreResult.innerHTML = "You win initiative";
+    getScoreResult.innerHTML = "You move first";
   } else {
-    getScoreResult.innerHTML = "You lose initiative";
+    getScoreResult.innerHTML = "Enemy moves first";
     enemyAttackSequence();
   }
 };

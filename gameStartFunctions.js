@@ -81,9 +81,12 @@ const getEnemy = () => {
 const setPlayer = (name) => {
   getPlayer(name);
   setPlayerStats();
+  // START BATTLE MUSIC
   // audioFight.play(); // <-< UNCOMMENT FOR MUSIC ON/OFF
   // START PLAYER APPEAR ANIMATION
   document.getElementById("player-avatar").classList.add("appear"); //FIXME:
+  // START PLAYER SPAWN SOUND
+  document.querySelector(".audio-player-spawn").play();
 };
 
 // ****************************
@@ -98,6 +101,8 @@ const setEnemy = () => {
   setFightScene();
   // START ENEMYY APPEAR ANIMATION
   document.getElementById("enemy-avatar").classList.add("appear"); //FIXME:
+  // START MONSTER SPWAN SOUND
+  document.querySelector(".audio-enemy-spawn").play();
 };
 
 // ************************

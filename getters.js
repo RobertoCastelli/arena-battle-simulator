@@ -16,10 +16,12 @@ let getHeaderActions = document.querySelector(".header-action");
 let audioFight = document.querySelector(".audio-fight");
 let audioSword = document.querySelector(".audio-sword");
 let audioSword1 = document.querySelector(".audio-sword1");
+let audioSwordDraw = document.querySelector(".audio-sword-draw");
 let audioPunch = document.querySelector(".audio-punch");
 let audioPunch1 = document.querySelector(".audio-punch1");
 let audioPunch2 = document.querySelector(".audio-punch2");
 let audioSlap = document.querySelector(".audio-slap");
+
 let audioSpecial = document.querySelector(".audio-special");
 let getModalContent = document.querySelector(".modal-content");
 let getModalContainer = document.querySelector(".modal-container");
