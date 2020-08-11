@@ -33,6 +33,15 @@
     <audio class="audio-special">
       <source src="./sounds/special.mp3" type="audio/mpeg" />
     </audio>
+    <audio class="audio-punches">
+      <source src="./sounds/punches.mp3" type="audio/mpeg" />
+    </audio>
+    <audio class="audio-punch1">
+      <source src="./sounds/punch1.mp3" type="audio/mpeg" />
+    </audio>
+    <audio class="audio-punch2">
+      <source src="./sounds/punch2.mp3" type="audio/mpeg" />
+    </audio>
 
     <div class="container">
       <!-- HEADER -->
@@ -41,7 +50,7 @@
 
         <hr />
         <h3 class="header-action">
-          Choose your Champion to Begin
+          Choose your Champion
         </h3>
       </header>
 
@@ -117,10 +126,12 @@
     </div>
 
     <!-- JS -->
-    <script src="functions.js"></script>
     <script src="getters.js"></script>
-    <script src="battle.js"></script>
+    <script src="battleFunctions.js"></script>
+    <script src="battleSequence.js"></script>
+    <script src="generalFunctions.js"></script>
     <script src="data.js"></script>
-    <script src="gameManager.js"></script>
+    <script src="gameStartFunctions.js"></script>
+    <script src="gameStartSequence.js"></script>
   </body>
 </html>

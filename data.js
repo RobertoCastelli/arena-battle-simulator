@@ -1,3 +1,11 @@
+const sounds = [
+  audioPunch,
+  audioPunch1,
+  audioPunch2,
+  audioPunches,
+  audioSpecial,
+];
+
 const players = [
   {
     icon: "./images/players/barbarian.jpg",
@@ -97,7 +105,7 @@ const mobs = [
     status: "alive",
   },
   {
-    icon: "./images/mobs/skeletor.jpg",
+    icon: "./images/mobs/nidalkaj.jpg",
     avatar: "./images/mobs/nidalkaj.gif",
     name: "Nidalkaj",
     type: "enemy",
@@ -109,7 +117,7 @@ const mobs = [
     status: "alive",
   },
   {
-    icon: "./images/mobs/skeletor.jpg",
+    icon: "./images/mobs/feticcio.jpg",
     avatar: "./images/mobs/feticcio.gif",
     name: "Feticcio",
     type: "enemy",
@@ -121,7 +129,7 @@ const mobs = [
     status: "alive",
   },
   {
-    icon: "./images/mobs/skeletor.jpg",
+    icon: "./images/mobs/zedaj.jpg",
     avatar: "./images/mobs/zedaj.gif",
     name: "Zedaj",
     type: "enemy",
@@ -145,7 +153,7 @@ const mobs = [
     status: "alive",
   },
   {
-    icon: "./images/mobs/skeletor.jpg",
+    icon: "./images/mobs/malakaj.jpg",
     avatar: "./images/mobs/malakaj.gif",
     name: "Malakaj",
     type: "enemy",
