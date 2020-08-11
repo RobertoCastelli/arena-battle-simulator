@@ -2,8 +2,6 @@
  * TODO:
  * calibrate HP MP etc
  * add random sounds when hitting
- * add defence stats
- * add who starts to attack based on speed
  * add better rules section
  * add ending scene
  * add ending recap score
@@ -292,8 +290,6 @@ const setEnemyStats = () => {
 // 16. BTN HEADER AT START TURN
 // ----------------------------
 const setStartScene = () => {
-  // REMOVE ALL ADDITIONAL ANIMATION CLASSES
-  // document.getElementById("player-avatar").classList.remove("move-right");
   // UPDATE COUNTER
   getAliveEnemy = mobs.filter((mob) => mob.status === "alive");
   getScore.innerHTML = mobs.length - getAliveEnemy.length;
