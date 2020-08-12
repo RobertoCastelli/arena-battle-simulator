@@ -68,7 +68,6 @@ const enemyAttack = () => {
   // UPDATE HP
   selectedPlayer[0].health -= damage;
   document.querySelector(".player-health").value = selectedPlayer[0].health;
-  setDelay(500).then(() => setPlayerStats());
 };
 
 // ************************

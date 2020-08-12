@@ -5,7 +5,7 @@ const playerAttackSequence = () => {
   playerAttack();
   checkDeath(selectedEnemy);
   // PLAYER HIT --> UPDATE STATS AFTER 500ms
-  setDelay(500).then(() => setEnemyStats());
+  setDelay(800).then(() => setEnemyStats());
   // IF ENEMY IS NOT DEAD --> ENEMY HIT
   selectedEnemy[0].status !== "dead" &&
     setDelay(1000).then(() => enemyAttackSequence());
@@ -21,7 +21,7 @@ const enemyAttackSequence = () => {
     enemyAttack();
     checkDeath(selectedPlayer);
     // ENEMY HIT --> UPDATE STATS AFTER 500ms
-    // setDelay(500).then(() => setPlayerStatus());
+    setDelay(800).then(() => setPlayerStats());
     checkBattleStatus();
   });
 };

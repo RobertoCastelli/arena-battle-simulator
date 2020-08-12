@@ -335,12 +335,12 @@ progress::-webkit-progress-bar {
 .player-health::-webkit-progress-value,
 .enemy-health::-webkit-progress-value {
   background: tomato;
-  transition: width 1s ease;
+  transition: width 1s ease-in-out;
 }
 .player-energy::-webkit-progress-value,
 .enemy-energy::-webkit-progress-value {
   background: orange;
-  transition: width 1s ease;
+  transition: width 1s ease-in-out;
 }
 
 /* ********* */
