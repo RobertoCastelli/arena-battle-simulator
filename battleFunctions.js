@@ -17,7 +17,6 @@ const checkInitiative = () => {
 // **********************
 // 19. DAMAGE CALCULATION
 // ----------------------
-
 const damageCalculation = (attacker, defender) => {
   let strength = attacker[0].strength / 10 + diceRoll(0, 20);
   let defence = defender[0].defence / 10 + diceRoll(0, 20);
@@ -53,6 +52,7 @@ const playerAttack = () => {
   getPlayerScore.innerHTML = `${selectedPlayer[0].name} hits for: <b>${damage}</b>`;
   // UPDATE HP
   selectedEnemy[0].health -= damage;
+  document.querySelector(".enemy-health").value = selectedEnemy[0].health;
 };
 
 // *************************
@@ -68,6 +68,7 @@ const enemyAttack = () => {
   // UPDATE HP
   selectedPlayer[0].health -= damage;
   document.querySelector(".player-health").value = selectedPlayer[0].health;
+  setDelay(500).then(() => setPlayerStats());
 };
 
 // ************************

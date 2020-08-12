@@ -75,36 +75,6 @@ const getEnemy = () => {
   return selectedEnemy;
 };
 
-// ****************************
-// 12. SETS PLAYER IN THE ARENA
-// ----------------------------
-const setPlayer = (name) => {
-  getPlayer(name);
-  setPlayerStats();
-  // START BATTLE MUSIC
-  // audioFight.play(); // <-< UNCOMMENT FOR MUSIC ON/OFF
-  // START PLAYER APPEAR ANIMATION
-  document.getElementById("player-avatar").classList.add("appear"); //FIXME:
-  // START PLAYER SPAWN SOUND
-  document.querySelector(".audio-player-spawn").play();
-};
-
-// ****************************
-// 13. SETS ENEMEY IN THE ARENA
-// ----------------------------
-const setEnemy = () => {
-  getEnemy();
-  setEnemyStats();
-  // CLEAR SCORE AFTER SUMMONING ENEMY
-  getPlayerScore.innerHTML = "...";
-  getEnemyScore.innerHTML = "...";
-  setFightScene();
-  // START ENEMYY APPEAR ANIMATION
-  document.getElementById("enemy-avatar").classList.add("appear"); //FIXME:
-  // START MONSTER SPWAN SOUND
-  document.querySelector(".audio-enemy-spawn").play();
-};
-
 // ************************
 // 14. DISPLAY PLAYER STATS
 // ------------------------
@@ -201,6 +171,36 @@ const setEnemyStats = () => {
       `;
   });
   getEnemyStats.innerHTML = enemyNew;
+};
+
+// ****************************
+// 12. SETS PLAYER IN THE ARENA
+// ----------------------------
+const setPlayer = (name) => {
+  getPlayer(name);
+  setPlayerStats();
+  // START BATTLE MUSIC
+  // audioFight.play(); // <-< UNCOMMENT FOR MUSIC ON/OFF
+  // START PLAYER APPEAR ANIMATION
+  document.getElementById("player-avatar").classList.add("appear"); //FIXME:
+  // START PLAYER SPAWN SOUND
+  document.querySelector(".audio-player-spawn").play();
+};
+
+// ****************************
+// 13. SETS ENEMEY IN THE ARENA
+// ----------------------------
+const setEnemy = () => {
+  getEnemy();
+  setEnemyStats();
+  // CLEAR SCORE AFTER SUMMONING ENEMY
+  getPlayerScore.innerHTML = "...";
+  getEnemyScore.innerHTML = "...";
+  setFightScene();
+  // START ENEMYY APPEAR ANIMATION
+  document.getElementById("enemy-avatar").classList.add("appear"); //FIXME:
+  // START MONSTER SPWAN SOUND
+  document.querySelector(".audio-enemy-spawn").play();
 };
 
 // ****************************
