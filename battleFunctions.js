@@ -108,6 +108,8 @@ const checkBattleStatus = () => {
     }, 2500);
     // NOONE DIES SEQUENCE
   } else {
-    getScoreResult.innerHTML = `°º¤ø,¸¸,ø¤º°°º¤ø,¸,ø¤º°`;
+    // getScoreResult.innerHTML = `°º¤ø,¸¸,ø¤º°°º¤ø,¸,ø¤º°`;
+    // getScoreResult.innerHTML = `(∩ ͡° ͜ʖ ͡°)⊃━☆ﾟ. *`;
+    getScoreResult.innerHTML = `█▬█ █ ▀█▀`;
   }
 };
