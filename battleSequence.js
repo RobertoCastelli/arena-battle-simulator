@@ -15,7 +15,7 @@ const playerAttackSequence = () => {
 // ENEMY ATTACK SEQUENCE
 // ---------------------
 const enemyAttackSequence = () => {
-  setDelay(2000).then(() => {
+  setDelay(1500).then(() => {
     enemyAttack();
     checkDeath(selectedPlayer);
     setDelay(800).then(() => setPlayerStats());

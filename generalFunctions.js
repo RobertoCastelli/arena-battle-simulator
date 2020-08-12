@@ -1,12 +1,10 @@
 /**
  * TODO:
  * calibrate HP MP etc
- * BUTTON DEF SPECIAL ATK
- * add random sounds when hitting
+ * Button DEF SPECIAL ATK
  * add better rules section
  * add ending scene
  * add ending recap score
- * add animation progress bar
  * add animation effect on special attack
  * add animation on death
  **/
@@ -48,6 +46,5 @@ const rules = () =>
 // ----------------------
 const playRandomSound = () => {
   let randomPick = diceRoll(0, sounds.length);
-  randomSound = sounds[randomPick];
-  randomSound.play();
+  randomSound = sounds[randomPick].play();
 };

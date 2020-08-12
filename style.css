@@ -267,7 +267,8 @@ footer {
 
 .enemy-avatar {
   position: absolute;
-  top: -250px;
+  width: 200px;
+  top: -270px;
   left: -50px;
 }
 

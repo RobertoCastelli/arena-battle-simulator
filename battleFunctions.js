@@ -21,6 +21,9 @@ const damageCalculation = (attacker, defender) => {
   let strength = attacker[0].strength / 10 + diceRoll(0, 20);
   let defence = defender[0].defence / 10 + diceRoll(0, 20);
   let baseDamage = Math.floor(strength - (strength * defence) / 100);
+  // DO NOT ACCEPT NEGATIVE VALUES
+  if (baseDamage <= 0) baseDamage = 0;
+  // HIT CHANCE: CRIT - MISS - NORMAL
   let hitChance = diceRoll(0, 20);
   console.log(`hitchance: ${hitChance}`);
   switch (hitChance) {
@@ -109,7 +112,7 @@ const checkBattleStatus = () => {
     // NOONE DIES SEQUENCE
   } else {
     // getScoreResult.innerHTML = `°º¤ø,¸¸,ø¤º°°º¤ø,¸,ø¤º°`;
-    // getScoreResult.innerHTML = `(∩ ͡° ͜ʖ ͡°)⊃━☆ﾟ. *`;
-    getScoreResult.innerHTML = `█▬█ █ ▀█▀`;
+    getScoreResult.innerHTML = `(∩ ͡° ͜ʖ ͡°)⊃━☆ﾟ. *`;
+    // getScoreResult.innerHTML = `█▬█ █ ▀█▀`;
   }
 };
