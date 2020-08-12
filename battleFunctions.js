@@ -3,8 +3,8 @@
 // --------------------
 const checkInitiative = () => {
   setEnemy();
-  let playerSpeed = selectedPlayer[0].speed + diceRoll(1, 10);
-  let enemySpeed = selectedEnemy[0].speed + diceRoll(1, 10);
+  let playerSpeed = selectedPlayer[0].speed + diceRoll(1, 20);
+  let enemySpeed = selectedEnemy[0].speed + diceRoll(1, 20);
   console.log(playerSpeed, enemySpeed);
   if (playerSpeed > enemySpeed) {
     getScoreResult.innerHTML = "You move first";
@@ -19,25 +19,35 @@ const checkInitiative = () => {
 // ----------------------
 
 const damageCalculation = (attacker, defender) => {
-  damage = Math.abs(
-    Math.floor(
-      attacker[0].strength - (attacker[0].strength * defender[0].defence) / 100
-    )
-  );
-  console.log(damage);
+  let strength = attacker[0].strength / 10 + diceRoll(0, 20);
+  let defence = defender[0].defence / 10 + diceRoll(0, 20);
+  let baseDamage = Math.floor(strength - (strength * defence) / 100);
+  let hitChance = diceRoll(0, 20);
+  console.log(`hitchance: ${hitChance}`);
+  switch (hitChance) {
+    case 0:
+      damage = 0;
+      console.log(`miss ${damage}`);
+      break;
+    case 19:
+    case 20:
+      damage = baseDamage * 2;
+      console.log(`crit hit: ${damage}`);
+      break;
+    default:
+      damage = baseDamage;
+      console.log(`normal ${damage}`);
+      break;
+  }
 };
 
 // **************************
 // 19. PLAYER ATTACK SEQUENCE
 // --------------------------
 const playerAttack = () => {
-  // REMOVE PLAYER APPEAR ANIMATION
-  // START PLAYER ATTACK ANIMATION
   document.getElementById("player-avatar").classList.remove("appear"); //FIXME:
   document.getElementById("player-avatar").classList.add("move-right"); //FIXME:
-  // GENERATE HIT SOUND
   playRandomSound();
-  // CALCULATE MAX DAMAGE
   damageCalculation(selectedPlayer, selectedEnemy);
   // INJECT HTML HIT SCORE
   getPlayerScore.innerHTML = `${selectedPlayer[0].name} hits for: <b>${damage}</b>`;
@@ -49,18 +59,15 @@ const playerAttack = () => {
 // 20. ENEMY ATTACK SEQUENCE
 //-------------------------
 const enemyAttack = () => {
-  // REMOVE ENEMY APPEAR ANIMATION
-  // START ENEMY ATTACK ANIMATION
   document.getElementById("enemy-avatar").classList.remove("appear"); //FIXME:
   document.getElementById("enemy-avatar").classList.add("move-left"); //FIXME:
-  // GENERATE HIT SOUND
   playRandomSound();
-  // GET DAMAGE + RANDOM
   damageCalculation(selectedEnemy, selectedPlayer);
   // INJECT HTML HIT SCORE
   getEnemyScore.innerHTML = `${selectedEnemy[0].name} hits for: <b>${damage}</b>`;
   // UPDATE HP
   selectedPlayer[0].health -= damage;
+  document.querySelector(".player-health").value = selectedPlayer[0].health;
 };
 
 // ************************
