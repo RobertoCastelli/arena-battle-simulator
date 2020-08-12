@@ -1,6 +1,6 @@
-// ********************
-// 19. CHECK INITIATIVE
-// --------------------
+// ****************
+// CHECK INITIATIVE
+// ----------------
 const checkInitiative = () => {
   setEnemy();
   let playerSpeed = selectedPlayer[0].speed + diceRoll(1, 20);
@@ -14,9 +14,9 @@ const checkInitiative = () => {
   }
 };
 
-// **********************
-// 19. DAMAGE CALCULATION
-// ----------------------
+// ******************
+// DAMAGE CALCULATION
+// ------------------
 const damageCalculation = (attacker, defender) => {
   let strength = attacker[0].strength / 10 + diceRoll(0, 20);
   let defence = defender[0].defence / 10 + diceRoll(0, 20);
@@ -43,9 +43,9 @@ const damageCalculation = (attacker, defender) => {
   }
 };
 
-// **************************
-// 19. PLAYER ATTACK SEQUENCE
-// --------------------------
+// **********************
+// PLAYER ATTACK SEQUENCE
+// ----------------------
 const playerAttack = () => {
   document.getElementById("player-avatar").classList.remove("appear"); //FIXME:
   document.getElementById("player-avatar").classList.add("move-right"); //FIXME:
@@ -58,9 +58,9 @@ const playerAttack = () => {
   document.querySelector(".enemy-health").value = selectedEnemy[0].health;
 };
 
-// *************************
-// 20. ENEMY ATTACK SEQUENCE
-//-------------------------
+// *********************
+// ENEMY ATTACK SEQUENCE
+// ---------------------
 const enemyAttack = () => {
   document.getElementById("enemy-avatar").classList.remove("appear"); //FIXME:
   document.getElementById("enemy-avatar").classList.add("move-left"); //FIXME:
@@ -73,9 +73,9 @@ const enemyAttack = () => {
   document.querySelector(".player-health").value = selectedPlayer[0].health;
 };
 
-// ************************
-// 21. CHECK DEATH & DISPLAY THE TEXT
-// ------------------------
+// ******************************
+// CHECK DEATH & DISPLAY THE TEXT
+// ------------------------------
 const checkDeath = (champion) => {
   if (champion[0].health <= 0) {
     // SHAKE SCREEN IF DEAD
@@ -92,9 +92,9 @@ const checkDeath = (champion) => {
   }
 };
 
-// ************************
-// 22. CHECK BATTLE STATUS
-// ------------------------
+// *******************
+// CHECK BATTLE STATUS
+// -------------------
 const checkBattleStatus = () => {
   // PLAYER DIES TEXT
   if (selectedPlayer[0].health <= 0 && selectedEnemy[0].health > 0) {
@@ -112,7 +112,7 @@ const checkBattleStatus = () => {
     // NOONE DIES SEQUENCE
   } else {
     // getScoreResult.innerHTML = `°º¤ø,¸¸,ø¤º°°º¤ø,¸,ø¤º°`;
-    getScoreResult.innerHTML = `(∩ ͡° ͜ʖ ͡°)⊃━☆ﾟ. *`;
-    // getScoreResult.innerHTML = `█▬█ █ ▀█▀`;
+    // getScoreResult.innerHTML = `(∩ ͡° ͜ʖ ͡°)⊃━☆ﾟ. *`;
+    getScoreResult.innerHTML = `(ง ͠° ͟ل͜ ͡°)ง ☆----☆ ლ( ͠°⏠ °ლ)`;
   }
 };

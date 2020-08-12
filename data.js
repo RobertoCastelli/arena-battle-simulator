@@ -72,7 +72,7 @@ const players = [
     type: "player",
     health: 500,
     energy: 150,
-    strength: 50,
+    strength: 300,
     defence: 50,
     speed: 100,
     status: "alive",

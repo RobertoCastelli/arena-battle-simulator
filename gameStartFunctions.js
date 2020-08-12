@@ -1,6 +1,6 @@
-// *******************************
-// 5. SHOW CHAMPION LIST FROM DATA
-// -------------------------------
+// ****************************
+// SHOW CHAMPION LIST FROM DATA
+// ----------------------------
 const playersList = () => {
   players.forEach((player) => {
     const playersItem = `
@@ -14,25 +14,25 @@ const playersList = () => {
   });
 };
 
-// ******************************************
-// 6. GET PLAYER FROM SELECTION LIST AT START
-// ------------------------------------------
+// ***************************************
+// GET PLAYER FROM SELECTION LIST AT START
+// ---------------------------------------
 const getPlayer = (name) =>
   (selectedPlayer = players.filter((player) => player.name === name));
 
-// *************
-// 7. OPEN MODAL
-// -------------
+// **********
+// OPEN MODAL
+// ----------
 const openPlayerModal = () => (getModalContainer.style.visibility = "visible");
 
-// **************
-// 8. CLOSE MODAL
-// --------------
+// ***********
+// CLOSE MODAL
+// -----------
 const closePlayerModal = () => (getModalContainer.style.visibility = "hidden");
 
-// *****************
-// 9. MODAL TEMPLATE
-// -----------------
+// **************
+// MODAL TEMPLATE
+// --------------
 const setPlayerModal = () => {
   modalPlayer = selectedPlayer.map((player) => {
     return `
@@ -47,9 +47,9 @@ const setPlayerModal = () => {
   getModalContent.innerHTML = modalPlayer;
 };
 
-// ****************************
-// 10. SET THE ARENA FOR BATTLE
-//-----------------------------
+// ************************
+// SET THE ARENA FOR BATTLE
+// ------------------------
 const setArena = () => {
   // HIDE SELECT CHAMPION LIST
   championList.innerHTML = "";
@@ -65,9 +65,9 @@ const setArena = () => {
   getScoreResult.innerHTML = "summon a Demon!";
 };
 
-// ****************************
+// ********************************
 // 11. GET ENEMY FROM DATA IF ALIVE
-// ----------------------------
+// --------------------------------
 const getEnemy = () => {
   // GET A RANDOM ENEMY FROM ALIVE POOL
   let randomPick = diceRoll(0, getAliveEnemy.length);
@@ -75,9 +75,9 @@ const getEnemy = () => {
   return selectedEnemy;
 };
 
-// ************************
-// 14. DISPLAY PLAYER STATS
-// ------------------------
+// ********************
+// DISPLAY PLAYER STATS
+// --------------------
 const setPlayerStats = () => {
   playerNew = selectedPlayer.map((player) => {
     return `
@@ -124,9 +124,9 @@ const setPlayerStats = () => {
   getPlayerStats.innerHTML = playerNew;
 };
 
-// ***********************
-// 15. DISPLAY ENEMY STATS
-// -----------------------
+// *******************
+// DISPLAY ENEMY STATS
+// -------------------
 const setEnemyStats = () => {
   enemyNew = selectedEnemy.map((enemy) => {
     return `
@@ -173,9 +173,9 @@ const setEnemyStats = () => {
   getEnemyStats.innerHTML = enemyNew;
 };
 
-// ****************************
-// 12. SETS PLAYER IN THE ARENA
-// ----------------------------
+// ************************
+// SETS PLAYER IN THE ARENA
+// ------------------------
 const setPlayer = (name) => {
   getPlayer(name);
   setPlayerStats();
@@ -187,9 +187,9 @@ const setPlayer = (name) => {
   document.querySelector(".audio-player-spawn").play();
 };
 
-// ****************************
-// 13. SETS ENEMEY IN THE ARENA
-// ----------------------------
+// ************************
+// SETS ENEMEY IN THE ARENA
+// ------------------------
 const setEnemy = () => {
   getEnemy();
   setEnemyStats();
@@ -203,9 +203,9 @@ const setEnemy = () => {
   document.querySelector(".audio-enemy-spawn").play();
 };
 
-// ****************************
-// 16. BTN HEADER AT START TURN
-// ----------------------------
+// ************************
+// BTN HEADER AT START TURN
+// ------------------------
 const setStartScene = () => {
   // REMOVE ALL ADDITIONAL ANIMATION CLASSES
   document.getElementById("player-avatar").classList.remove("move-right"); //FIXME:
@@ -229,9 +229,9 @@ const setStartScene = () => {
   }
 };
 
-// ******************************
-// 17. BTN HEADER AT PLAYER DEATH
-// ------------------------------
+// **************************
+// BTN HEADER AT PLAYER DEATH
+// --------------------------
 const setDeathScene = () => {
   // ADD RESTART BTN SET
   getHeaderActions.innerHTML = `
@@ -240,13 +240,13 @@ const setDeathScene = () => {
     `;
 };
 
-// ****************************
-// 18. BTN HEADER WHEN FIGHTING
-// ----------------------------
+// ************************
+// BTN HEADER WHEN FIGHTING
+// ------------------------
 const setFightScene = () => {
   // ADD FIGHTIN BTN SET
   getHeaderActions.innerHTML = `
-    <p>Make your move!</p>
+    <p>Action Panel</p>
     <button class="btn-attack" onclick="playerAttackSequence()">attack enemy</button>
     <button class="btn-defend" onclick="playerDefenceSequence()">defend stance</button>
     <button class="btn-rest" onclick="playerStanceSequence()">rest stance</button>
