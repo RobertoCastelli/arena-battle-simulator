@@ -22,25 +22,30 @@ const damageCalculation = (attacker, defender) => {
   let defence = defender[0].defence / 10 + diceRoll(0, 20);
   let baseDamage = Math.floor(strength - (strength * defence) / 100);
   // DO NOT ACCEPT NEGATIVE VALUES
-  if (baseDamage <= 0) baseDamage = 0;
-  // HIT CHANCE: CRIT - MISS - NORMAL
+  return baseDamage <= 0 ? (damage = 0) : (damage = baseDamage * mod);
+};
+
+// ********************************
+// HIT CHANCE: CRIT - MISS - NORMAL
+// --------------------------------
+const hitChance = () => {
   let hitChance = diceRoll(0, 20);
-  console.log(`hitchance: ${hitChance}`);
   switch (hitChance) {
     case 0:
-      damage = 0;
-      console.log(`miss ${damage}`);
+      mod = 0;
+      console.log(mod);
       break;
     case 19:
     case 20:
-      damage = baseDamage * 2;
-      console.log(`crit hit: ${damage}`);
+      mod = 3;
+      console.log(mod);
       break;
     default:
-      damage = baseDamage;
-      console.log(`normal ${damage}`);
+      mod = 1;
+      console.log(mod);
       break;
   }
+  return mod;
 };
 
 // **********************
@@ -50,7 +55,9 @@ const playerAttack = () => {
   document.getElementById("player-avatar").classList.remove("appear"); //FIXME:
   document.getElementById("player-avatar").classList.add("move-right"); //FIXME:
   playRandomSound();
+  hitChance();
   damageCalculation(selectedPlayer, selectedEnemy);
+
   // INJECT HTML HIT SCORE
   getPlayerScore.innerHTML = `${selectedPlayer[0].name} hits for: <b>${damage}</b>`;
   // UPDATE HP
@@ -65,6 +72,7 @@ const enemyAttack = () => {
   document.getElementById("enemy-avatar").classList.remove("appear"); //FIXME:
   document.getElementById("enemy-avatar").classList.add("move-left"); //FIXME:
   playRandomSound();
+  hitChance();
   damageCalculation(selectedEnemy, selectedPlayer);
   // INJECT HTML HIT SCORE
   getEnemyScore.innerHTML = `${selectedEnemy[0].name} hits for: <b>${damage}</b>`;
@@ -113,6 +121,6 @@ const checkBattleStatus = () => {
   } else {
     // getScoreResult.innerHTML = `°º¤ø,¸¸,ø¤º°°º¤ø,¸,ø¤º°`;
     // getScoreResult.innerHTML = `(∩ ͡° ͜ʖ ͡°)⊃━☆ﾟ. *`;
-    getScoreResult.innerHTML = `(ง ͠° ͟ل͜ ͡°)ง ☆----☆ ლ( ͠°⏠ °ლ)`;
+    getScoreResult.innerHTML = `(ง ͠° ͟ل͜ ͡°)ง ☆ ლ( ͠°⏠ °ლ)`;
   }
 };

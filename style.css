@@ -304,7 +304,7 @@ hr {
   border: 0.2rem inset rgb(238, 229, 217);
 }
 .score-result {
-  color: red;
+  color: brown;
   font-weight: bold;
   text-transform: uppercase;
 }
