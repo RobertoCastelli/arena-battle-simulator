@@ -25,24 +25,44 @@ const damageCalculation = (attacker, defender) => {
   return baseDamage <= 0 ? (damage = 0) : (damage = baseDamage * mod);
 };
 
-// ********************************
-// HIT CHANCE: CRIT - MISS - NORMAL
-// --------------------------------
-const hitChance = () => {
-  let hitChance = diceRoll(0, 20);
+// ********************
+// CHAMP SPEED MODIFIER
+// --------------------
+const speedMod = (champion) => {
+  if (champion[0].speed >= 80) {
+    speedModifier = 5;
+  } else if (champion[0].speed >= 60 <= 79) {
+    speedModifier = 2;
+  } else {
+    speedModifier = 0;
+  }
+  return speedModifier;
+};
+
+// *******************
+// HIT CHANCE MODIFIER
+// -------------------
+const hitChance = (champion) => {
+  let hitChance = diceRoll(0, 20) + speedMod(champion);
   switch (hitChance) {
+    // MISS
     case 0:
+    case 1:
+    case 2:
       mod = 0;
-      console.log(mod);
       break;
-    case 19:
+    // CRITICAL
     case 20:
-      mod = 3;
-      console.log(mod);
+    case 21:
+    case 22:
+    case 23:
+    case 24:
+    case 25:
+      mod = 2;
       break;
+    // NORMAL
     default:
       mod = 1;
-      console.log(mod);
       break;
   }
   return mod;
@@ -55,11 +75,16 @@ const playerAttack = () => {
   document.getElementById("player-avatar").classList.remove("appear"); //FIXME:
   document.getElementById("player-avatar").classList.add("move-right"); //FIXME:
   playRandomSound();
-  hitChance();
+  hitChance(selectedPlayer);
   damageCalculation(selectedPlayer, selectedEnemy);
-
   // INJECT HTML HIT SCORE
-  getPlayerScore.innerHTML = `${selectedPlayer[0].name} hits for: <b>${damage}</b>`;
+  if (mod === 0) {
+    getPlayerScore.innerHTML = `${selectedPlayer[0].name} <b>MISS!</b>`;
+  } else if (mod === 2) {
+    getPlayerScore.innerHTML = `${selectedPlayer[0].name} <b>CRITS</b> for: <b>${damage}</b>`;
+  } else {
+    getPlayerScore.innerHTML = `${selectedPlayer[0].name} hits for: <b>${damage}</b>`;
+  }
   // UPDATE HP
   selectedEnemy[0].health -= damage;
   document.querySelector(".enemy-health").value = selectedEnemy[0].health;
@@ -72,10 +97,16 @@ const enemyAttack = () => {
   document.getElementById("enemy-avatar").classList.remove("appear"); //FIXME:
   document.getElementById("enemy-avatar").classList.add("move-left"); //FIXME:
   playRandomSound();
-  hitChance();
+  hitChance(selectedEnemy);
   damageCalculation(selectedEnemy, selectedPlayer);
   // INJECT HTML HIT SCORE
-  getEnemyScore.innerHTML = `${selectedEnemy[0].name} hits for: <b>${damage}</b>`;
+  if (mod === 0) {
+    getEnemyScore.innerHTML = `${selectedEnemy[0].name} <b>MISS!</b>`;
+  } else if (mod === 2) {
+    getEnemyScore.innerHTML = `${selectedEnemy[0].name} <b>CRITS</b> for: <b>${damage}</b>`;
+  } else {
+    getEnemyScore.innerHTML = `${selectedEnemy[0].name} hits for: <b>${damage}</b>`;
+  }
   // UPDATE HP
   selectedPlayer[0].health -= damage;
   document.querySelector(".player-health").value = selectedPlayer[0].health;
@@ -117,7 +148,7 @@ const checkBattleStatus = () => {
     setTimeout(() => {
       getScoreResult.innerHTML = "Make your choice!";
     }, 2500);
-    // NOONE DIES SEQUENCE
+    // BATTLE SEQUENCE
   } else {
     // getScoreResult.innerHTML = `°º¤ø,¸¸,ø¤º°°º¤ø,¸,ø¤º°`;
     // getScoreResult.innerHTML = `(∩ ͡° ͜ʖ ͡°)⊃━☆ﾟ. *`;
