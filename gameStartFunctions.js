@@ -250,7 +250,7 @@ const setFightScene = () => {
     <p>Action Panel</p>
     <button class="btn-attack" onclick="playerAttackSequence()">attack enemy</button>
     <button class="btn-defend" onclick="playerDefenceSequence()">defend stance</button>
-    <button class="btn-rest" onclick="playerStanceSequence()">rest stance</button>
+    <button class="btn-rest" onclick="playerRestSequence()">rest stance</button>
     <button class="btn-special" onclick="playerSpecialSequence()">special attack</button>
     <button class="btn-restart" onclick="restartGame()">restart game</button>
     `;

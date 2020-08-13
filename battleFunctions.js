@@ -18,11 +18,26 @@ const checkInitiative = () => {
 // DAMAGE CALCULATION
 // ------------------
 const damageCalculation = (attacker, defender) => {
-  let strength = attacker[0].strength / 10 + diceRoll(0, 20);
-  let defence = defender[0].defence / 10 + diceRoll(0, 20);
-  let baseDamage = Math.floor(strength - (strength * defence) / 100);
+  let strength = attacker[0].strength + diceRoll(0, 20);
+  let defence = defender[0].defence + diceRoll(0, 20);
+  let defenceMod = strength * (defence / 100);
+  let baseDamage = Math.floor((strength - defenceMod) * energyMod(attacker));
   // DO NOT ACCEPT NEGATIVE VALUES
+  console.log(`baseDMG: ${baseDamage}`);
   return baseDamage <= 0 ? (damage = 0) : (damage = baseDamage * mod);
+};
+
+const energyMod = (attacker) => {
+  let energy = attacker[0].energy;
+  if (energy >= 60) {
+    energyModifier = 2;
+  } else if (energy >= 5 && energy <= 59) {
+    energyModifier = 0.5;
+  } else {
+    energyModifier = 0;
+  }
+  console.log(`energyMod: ${energyModifier}`);
+  return energyModifier;
 };
 
 // ********************
@@ -31,11 +46,12 @@ const damageCalculation = (attacker, defender) => {
 const speedMod = (champion) => {
   if (champion[0].speed >= 80) {
     speedModifier = 5;
-  } else if (champion[0].speed >= 60 <= 79) {
+  } else if (champion[0].speed >= 60 && champion[0].speed <= 79) {
     speedModifier = 2;
   } else {
     speedModifier = 0;
   }
+  console.log(`speedMod: ${speedModifier}`);
   return speedModifier;
 };
 
@@ -65,7 +81,16 @@ const hitChance = (champion) => {
       mod = 1;
       break;
   }
+  console.log(`hitchance: ${hitChance}`);
   return mod;
+};
+
+// ***********************
+// PLAYER DEFENCE SEQUENCE
+// -----------------------
+const playerRest = () => {
+  selectedPlayer[0].energy += diceRoll(0, 30);
+  document.querySelector(".player-energy").value = selectedPlayer[0].energy;
 };
 
 // **********************
@@ -87,10 +112,13 @@ const playerAttack = () => {
   } else {
     getPlayerScore.innerHTML = `${selectedPlayer[0].name} hits for: <b>${damage}</b>`;
   }
-  // UPDATE HP
+  // UPDATE STATS HP
   selectedEnemy[0].health -= damage;
+  selectedPlayer[0].energy -= damage;
+  checkEnergyStatus(selectedPlayer);
   // UPDATE PROGRESS BAR
   document.querySelector(".enemy-health").value = selectedEnemy[0].health;
+  document.querySelector(".player-energy").value = selectedPlayer[0].energy;
 };
 
 // *********************
@@ -114,14 +142,17 @@ const enemyAttack = () => {
   }
   // UPDATE HP
   selectedPlayer[0].health -= damage;
+  selectedEnemy[0].energy -= damage;
+  checkEnergyStatus(selectedEnemy);
   // UPDATE PROGRESS BAR
   document.querySelector(".player-health").value = selectedPlayer[0].health;
+  document.querySelector(".enemy-energy").value = selectedEnemy[0].energy;
 };
 
-// ******************************
-// CHECK DEATH & DISPLAY THE TEXT
-// ------------------------------
-const checkDeath = (champion) => {
+// ******************
+// CHECK DEATH STATUS
+// ------------------
+const checkDeathStatus = (champion) => {
   if (champion[0].health <= 0) {
     // SHAKE SCREEN IF DEAD
     getArena.classList.add("shake");
@@ -138,9 +169,15 @@ const checkDeath = (champion) => {
 };
 
 // *******************
-// CHECK BATTLE STATUS
+// CHECK ENERGY STATUS
 // -------------------
-const checkBattleStatus = () => {
+const checkEnergyStatus = (champion) =>
+  champion[0].energy <= 0 && (champion[0].energy = 0);
+
+// *******************
+// CHECK HEALTH STATUS
+// -------------------
+const checkHealthStatus = () => {
   // PLAYER DIES TEXT
   if (selectedPlayer[0].health <= 0 && selectedEnemy[0].health > 0) {
     getScoreResult.innerHTML = `${selectedEnemy[0].name} slays ${selectedPlayer[0].name}`;
