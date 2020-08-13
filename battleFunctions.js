@@ -5,7 +5,7 @@ const checkInitiative = () => {
   setEnemy();
   let playerSpeed = selectedPlayer[0].speed + diceRoll(1, 20);
   let enemySpeed = selectedEnemy[0].speed + diceRoll(1, 20);
-  console.log(playerSpeed, enemySpeed);
+  console.log(`initiative player:${playerSpeed} enemy:${enemySpeed}`);
   if (playerSpeed > enemySpeed) {
     getScoreResult.innerHTML = "You move first";
   } else {
@@ -77,7 +77,7 @@ const playerAttack = () => {
   playRandomSound();
   hitChance(selectedPlayer);
   damageCalculation(selectedPlayer, selectedEnemy);
-  // INJECT HTML HIT SCORE
+  // INJECT HTML HIT SCORE (MISS-CRITS-NORMAL)
   if (mod === 0) {
     getPlayerScore.innerHTML = `${selectedPlayer[0].name} <b>MISS!</b>`;
   } else if (mod === 2) {
@@ -87,6 +87,7 @@ const playerAttack = () => {
   }
   // UPDATE HP
   selectedEnemy[0].health -= damage;
+  // UPDATE PROGRESS BAR
   document.querySelector(".enemy-health").value = selectedEnemy[0].health;
 };
 
@@ -99,7 +100,7 @@ const enemyAttack = () => {
   playRandomSound();
   hitChance(selectedEnemy);
   damageCalculation(selectedEnemy, selectedPlayer);
-  // INJECT HTML HIT SCORE
+  // INJECT HTML HIT SCORE (MISS-CRITS-NORMAL)
   if (mod === 0) {
     getEnemyScore.innerHTML = `${selectedEnemy[0].name} <b>MISS!</b>`;
   } else if (mod === 2) {
@@ -109,6 +110,7 @@ const enemyAttack = () => {
   }
   // UPDATE HP
   selectedPlayer[0].health -= damage;
+  // UPDATE PROGRESS BAR
   document.querySelector(".player-health").value = selectedPlayer[0].health;
 };
 
@@ -123,11 +125,11 @@ const checkDeath = (champion) => {
     champion[0].icon = "./images/rip.jpg";
     champion[0].status = "dead";
     champion[0].avatar = "";
-    // IF PLAYER DIES, RESTART
-    // IF ENEMY DIES, CONTINUE GAME
     champion[0].type === "player"
-      ? setDeathScene()
-      : setDelay(2500).then(() => setStartScene());
+      ? // IF PLAYER DIES, RESTART
+        setDeathScene()
+      : // IF ENEMY DIES, CONTINUE GAME
+        setDelay(2500).then(() => setStartScene());
   }
 };
 
