@@ -72,6 +72,7 @@ const hitChance = (champion) => {
 // PLAYER ATTACK SEQUENCE
 // ----------------------
 const playerAttack = () => {
+  getArena.classList.remove("shake"); //FIXME:
   document.getElementById("player-avatar").classList.remove("appear"); //FIXME:
   document.getElementById("player-avatar").classList.add("move-right"); //FIXME:
   playRandomSound();
@@ -81,6 +82,7 @@ const playerAttack = () => {
   if (mod === 0) {
     getPlayerScore.innerHTML = `${selectedPlayer[0].name} <b>MISS!</b>`;
   } else if (mod === 2) {
+    getArena.classList.add("shake");
     getPlayerScore.innerHTML = `${selectedPlayer[0].name} <b>CRITS</b> for: <b>${damage}</b>`;
   } else {
     getPlayerScore.innerHTML = `${selectedPlayer[0].name} hits for: <b>${damage}</b>`;
@@ -95,6 +97,7 @@ const playerAttack = () => {
 // ENEMY ATTACK SEQUENCE
 // ---------------------
 const enemyAttack = () => {
+  getArena.classList.remove("shake"); //FIXME:
   document.getElementById("enemy-avatar").classList.remove("appear"); //FIXME:
   document.getElementById("enemy-avatar").classList.add("move-left"); //FIXME:
   playRandomSound();
@@ -104,6 +107,7 @@ const enemyAttack = () => {
   if (mod === 0) {
     getEnemyScore.innerHTML = `${selectedEnemy[0].name} <b>MISS!</b>`;
   } else if (mod === 2) {
+    getArena.classList.add("shake");
     getEnemyScore.innerHTML = `${selectedEnemy[0].name} <b>CRITS</b> for: <b>${damage}</b>`;
   } else {
     getEnemyScore.innerHTML = `${selectedEnemy[0].name} hits for: <b>${damage}</b>`;

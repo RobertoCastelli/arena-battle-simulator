@@ -209,6 +209,7 @@ const setEnemy = () => {
 const setStartScene = () => {
   // REMOVE ALL ADDITIONAL ANIMATION CLASSES
   document.getElementById("player-avatar").classList.remove("move-right"); //FIXME:
+  getArena.classList.remove("shake"); //FIXME:
   // UPDATE COUNTER
   getAliveEnemy = mobs.filter((mob) => mob.status === "alive");
   getScore.innerHTML = mobs.length - getAliveEnemy.length;
