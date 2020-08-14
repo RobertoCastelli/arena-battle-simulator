@@ -86,11 +86,18 @@ const hitChance = (champion) => {
 };
 
 // ***********************
-// PLAYER DEFENCE SEQUENCE
+// PLAYER REST SEQUENCE
 // -----------------------
 const playerRest = () => {
-  selectedPlayer[0].energy += diceRoll(0, 30);
+  // UPDATE PLAYER STATS
+  selectedPlayer[0].energy += diceRoll(5, 30);
+  selectedPlayer[0].health += diceRoll(5, 30);
+  // DO NOT ACCEPT NUMBERS > 100
+  selectedPlayer[0].energy > 100 && (selectedPlayer[0].energy = 100);
+  selectedPlayer[0].health > 100 && (selectedPlayer[0].health = 100);
+  // UPDATE PROGRESS BAR
   document.querySelector(".player-energy").value = selectedPlayer[0].energy;
+  document.querySelector(".player-health").value = selectedPlayer[0].health;
 };
 
 // **********************
