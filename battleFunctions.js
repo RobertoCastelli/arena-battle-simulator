@@ -18,8 +18,8 @@ const checkInitiative = () => {
 // DAMAGE CALCULATION
 // ------------------
 const damageCalculation = (attacker, defender) => {
-  let strength = attacker[0].strength + diceRoll(0, 20);
-  let defence = defender[0].defence + diceRoll(0, 20);
+  let strength = attacker[0].strength + diceRoll(0, 10);
+  let defence = defender[0].defence + diceRoll(0, 10);
   let defenceMod = strength * (defence / 100);
   let baseDamage = Math.floor((strength - defenceMod) * energyMod(attacker));
   // DO NOT ACCEPT NEGATIVE VALUES
@@ -30,7 +30,7 @@ const damageCalculation = (attacker, defender) => {
 const energyMod = (attacker) => {
   let energy = attacker[0].energy;
   if (energy >= 60) {
-    energyModifier = 2;
+    energyModifier = 1;
   } else if (energy >= 5 && energy <= 59) {
     energyModifier = 0.5;
   } else {
@@ -45,7 +45,7 @@ const energyMod = (attacker) => {
 // --------------------
 const speedMod = (champion) => {
   if (champion[0].speed >= 80) {
-    speedModifier = 5;
+    speedModifier = 4;
   } else if (champion[0].speed >= 60 && champion[0].speed <= 79) {
     speedModifier = 2;
   } else {
@@ -65,6 +65,9 @@ const hitChance = (champion) => {
     case 0:
     case 1:
     case 2:
+    case 3:
+    case 4:
+    case 5:
       mod = 0;
       break;
     // CRITICAL
@@ -88,10 +91,13 @@ const hitChance = (champion) => {
 // ***********************
 // PLAYER REST SEQUENCE
 // -----------------------
+let playerRested = false;
 const playerRest = () => {
   // UPDATE PLAYER STATS
   selectedPlayer[0].energy += diceRoll(5, 30);
-  selectedPlayer[0].health += diceRoll(5, 30);
+  selectedPlayer[0].health += diceRoll(5, 20);
+  selectedPlayer[0].defence -= 10;
+  playerRested = true;
   // DO NOT ACCEPT NUMBERS > 100
   selectedPlayer[0].energy > 100 && (selectedPlayer[0].energy = 100);
   selectedPlayer[0].health > 100 && (selectedPlayer[0].health = 100);
@@ -104,6 +110,10 @@ const playerRest = () => {
 // PLAYER ATTACK SEQUENCE
 // ----------------------
 const playerAttack = () => {
+  // GIVE BACK DEFENCE IF PLAYER RESTED
+  playerRested === true && (selectedPlayer[0].defence += 10);
+  playerRested = false;
+  // ANIMATIONS
   getArena.classList.remove("shake"); //FIXME:
   document.getElementById("player-avatar").classList.remove("appear"); //FIXME:
   document.getElementById("player-avatar").classList.add("move-right"); //FIXME:

@@ -19,7 +19,6 @@ const playerAttackSequence = () => {
 const playerRestSequence = () => {
   playerRest();
   setDelay(800).then(() => setPlayerStats());
-  // IF ENEMY IS NOT DEAD --> ENEMY HIT SEQUENCE
   enemyAttackSequence();
 };
 
@@ -33,6 +32,7 @@ const enemyAttackSequence = () => {
     setDelay(800).then(() => {
       setPlayerStats();
       setEnemyStats();
+      checkHealthStatus();
     });
   });
 };
