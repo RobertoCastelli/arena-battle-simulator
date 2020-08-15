@@ -34,7 +34,7 @@ const energyMod = (attacker) => {
   } else if (energy >= 5 && energy <= 59) {
     energyModifier = 0.5;
   } else {
-    energyModifier = 0;
+    energyModifier = 0.2;
   }
   console.log(`energyMod: ${energyModifier}`);
   return energyModifier;
@@ -88,6 +88,14 @@ const hitChance = (champion) => {
   return mod;
 };
 
+
+// ***********************
+// PLAYER DEFENCE SEQUENCE
+// -----------------------
+const playerDefence = () => {
+  players.
+}
+
 // ***********************
 // PLAYER REST SEQUENCE
 // -----------------------
@@ -96,6 +104,7 @@ const playerRest = () => {
   // UPDATE PLAYER STATS
   selectedPlayer[0].energy += diceRoll(5, 30);
   selectedPlayer[0].health += diceRoll(5, 20);
+  // IF RESTING LOSE DEFENCE
   selectedPlayer[0].defence -= 10;
   playerRested = true;
   // DO NOT ACCEPT NUMBERS > 100
@@ -111,8 +120,8 @@ const playerRest = () => {
 // ----------------------
 const playerAttack = () => {
   // GIVE BACK DEFENCE IF PLAYER RESTED
-  playerRested === true && (selectedPlayer[0].defence += 10);
-  playerRested = false;
+  // playerRested === true && (selectedPlayer[0].defence += 8);
+  // playerRested = false;
   // ANIMATIONS
   getArena.classList.remove("shake"); //FIXME:
   document.getElementById("player-avatar").classList.remove("appear"); //FIXME:
@@ -131,7 +140,7 @@ const playerAttack = () => {
   }
   // UPDATE STATS HP
   selectedEnemy[0].health -= damage;
-  selectedPlayer[0].energy -= damage;
+  selectedPlayer[0].energy -= Math.floor(damage / 2);
   checkEnergyStatus(selectedPlayer);
   // UPDATE PROGRESS BAR
   document.querySelector(".enemy-health").value = selectedEnemy[0].health;
@@ -159,7 +168,7 @@ const enemyAttack = () => {
   }
   // UPDATE HP
   selectedPlayer[0].health -= damage;
-  selectedEnemy[0].energy -= damage;
+  selectedEnemy[0].energy -= Math.floor(damage / 2);
   checkEnergyStatus(selectedEnemy);
   // UPDATE PROGRESS BAR
   document.querySelector(".player-health").value = selectedPlayer[0].health;
