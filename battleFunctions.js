@@ -88,13 +88,16 @@ const hitChance = (champion) => {
   return mod;
 };
 
-
 // ***********************
 // PLAYER DEFENCE SEQUENCE
 // -----------------------
+let playerDefended = false;
 const playerDefence = () => {
-  players.
-}
+  selectedPlayer[0].defence += 1000;
+  selectedPlayer[0].energy -= diceRoll(10, 50);
+  document.querySelector(".player-energy").value = selectedPlayer[0].energy;
+  playerDefended = true;
+};
 
 // ***********************
 // PLAYER REST SEQUENCE
@@ -122,6 +125,10 @@ const playerAttack = () => {
   // GIVE BACK DEFENCE IF PLAYER RESTED
   // playerRested === true && (selectedPlayer[0].defence += 8);
   // playerRested = false;
+
+  // RESET DEFENCE STATE IF PLAYYER DEFENDED ROUND BEFORE
+  playerDefended === true && (selectedPlayer[0].defence -= 1000);
+  playerDefended = false;
   // ANIMATIONS
   getArena.classList.remove("shake"); //FIXME:
   document.getElementById("player-avatar").classList.remove("appear"); //FIXME:
@@ -141,7 +148,7 @@ const playerAttack = () => {
   // UPDATE STATS HP
   selectedEnemy[0].health -= damage;
   selectedPlayer[0].energy -= Math.floor(damage / 2);
-  checkEnergyStatus(selectedPlayer);
+  checkEnergyNegatives(selectedPlayer);
   // UPDATE PROGRESS BAR
   document.querySelector(".enemy-health").value = selectedEnemy[0].health;
   document.querySelector(".player-energy").value = selectedPlayer[0].energy;
@@ -169,7 +176,7 @@ const enemyAttack = () => {
   // UPDATE HP
   selectedPlayer[0].health -= damage;
   selectedEnemy[0].energy -= Math.floor(damage / 2);
-  checkEnergyStatus(selectedEnemy);
+  checkEnergyNegatives(selectedEnemy);
   // UPDATE PROGRESS BAR
   document.querySelector(".player-health").value = selectedPlayer[0].health;
   document.querySelector(".enemy-energy").value = selectedEnemy[0].energy;
@@ -197,7 +204,7 @@ const checkDeathStatus = (champion) => {
 // *******************
 // CHECK ENERGY STATUS
 // -------------------
-const checkEnergyStatus = (champion) =>
+const checkEnergyNegatives = (champion) =>
   champion[0].energy <= 0 && (champion[0].energy = 0);
 
 // *******************

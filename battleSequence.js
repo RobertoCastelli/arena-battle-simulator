@@ -22,6 +22,12 @@ const playerRestSequence = () => {
   enemyAttackSequence();
 };
 
+const playerDefenceSequence = () => {
+  playerDefence();
+  setDelay(800).then(() => setPlayerStats());
+  enemyAttackSequence();
+};
+
 // *********************
 // ENEMY ATTACK SEQUENCE
 // ---------------------
