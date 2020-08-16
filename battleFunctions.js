@@ -34,7 +34,7 @@ const energyMod = (attacker) => {
   } else if (energy >= 5 && energy <= 59) {
     energyModifier = 0.5;
   } else {
-    energyModifier = 0.2;
+    energyModifier = 0;
   }
   console.log(`energyMod: ${energyModifier}`);
   return energyModifier;
@@ -93,10 +93,13 @@ const hitChance = (champion) => {
 // -----------------------
 let playerDefended = false;
 const playerDefence = () => {
+  playerDefended = true;
+  playerDefended === true &&
+    (document.querySelector(".btn-defend").disabled = true);
   selectedPlayer[0].defence += 1000;
   selectedPlayer[0].energy -= diceRoll(10, 50);
+  checkEnergyNegatives(selectedPlayer);
   document.querySelector(".player-energy").value = selectedPlayer[0].energy;
-  playerDefended = true;
 };
 
 // ***********************
@@ -127,6 +130,7 @@ const playerAttack = () => {
   // playerRested = false;
 
   // RESET DEFENCE STATE IF PLAYYER DEFENDED ROUND BEFORE
+
   playerDefended === true && (selectedPlayer[0].defence -= 1000);
   playerDefended = false;
   // ANIMATIONS
