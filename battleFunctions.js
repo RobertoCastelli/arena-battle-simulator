@@ -108,8 +108,8 @@ let playerRested = false;
 const playerRest = () => {
   // RESET DEFENCE STATUS
   document.querySelector(".btn-defend").disabled = false;
+  playerDefended === true && (selectedPlayer[0].defence -= 1000);
   playerDefended = false;
-  selectedPlayer[0].defence -= 1000;
   // UPDATE PLAYER STATS
   selectedPlayer[0].energy += diceRoll(5, 30);
   selectedPlayer[0].health += diceRoll(5, 20);
@@ -135,8 +135,8 @@ const playerAttack = () => {
 
   // RESET DEFENCE STATUS
   document.querySelector(".btn-defend").disabled = false;
+  playerDefended === true && (selectedPlayer[0].defence -= 1000);
   playerDefended = false;
-  selectedPlayer[0].defence -= 1000;
   // ANIMATIONS
   getArena.classList.remove("shake"); //FIXME:
   document.getElementById("player-avatar").classList.remove("appear"); //FIXME:
