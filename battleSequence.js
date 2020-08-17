@@ -12,6 +12,17 @@ const playerAttackSequence = () => {
   selectedEnemy[0].status !== "dead" && enemyAttackSequence();
   checkHealthStatus();
 };
+// ***************************
+// PLAYER LAST RESORT SEQUENCE
+// ---------------------------
+const playerLastResortSequence = () => {
+  playerLastResort();
+  checkDeathStatus(selectedEnemy);
+  checkDeathStatus(selectedPlayer);
+  setPlayerStats();
+  setEnemyStats();
+  checkHealthStatus();
+};
 
 // ********************
 // PLAYER REST SEQUENCE

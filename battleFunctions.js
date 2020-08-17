@@ -87,6 +87,17 @@ const hitChance = (champion) => {
   console.log(`hitchance: ${hitChance}`);
   return mod;
 };
+// ***************************
+// PLAYER LAST RESORT SEQUENCE
+// ---------------------------
+const playerLastResort = () => {
+  let destiny = 0;
+  destiny = diceRoll(1, 6);
+  console.log(`destiny ${destiny}`);
+  return destiny <= 3
+    ? (selectedPlayer[0].health = 0)
+    : (selectedEnemy[0].health = 0);
+};
 
 // ***********************
 // PLAYER DEFENCE SEQUENCE
