@@ -93,9 +93,8 @@ const hitChance = (champion) => {
 // -----------------------
 let playerDefended = false;
 const playerDefence = () => {
+  document.querySelector(".btn-defend").disabled = true;
   playerDefended = true;
-  playerDefended === true &&
-    (document.querySelector(".btn-defend").disabled = true);
   selectedPlayer[0].defence += 1000;
   selectedPlayer[0].energy -= diceRoll(10, 50);
   checkEnergyNegatives(selectedPlayer);
@@ -107,12 +106,17 @@ const playerDefence = () => {
 // -----------------------
 let playerRested = false;
 const playerRest = () => {
+  // RESET DEFENCE STATUS
+  document.querySelector(".btn-defend").disabled = false;
+  playerDefended = false;
+  selectedPlayer[0].defence -= 1000;
   // UPDATE PLAYER STATS
   selectedPlayer[0].energy += diceRoll(5, 30);
   selectedPlayer[0].health += diceRoll(5, 20);
   // IF RESTING LOSE DEFENCE
   selectedPlayer[0].defence -= 10;
   playerRested = true;
+  checkEnergyNegatives(selectedPlayer);
   // DO NOT ACCEPT NUMBERS > 100
   selectedPlayer[0].energy > 100 && (selectedPlayer[0].energy = 100);
   selectedPlayer[0].health > 100 && (selectedPlayer[0].health = 100);
@@ -129,10 +133,10 @@ const playerAttack = () => {
   // playerRested === true && (selectedPlayer[0].defence += 8);
   // playerRested = false;
 
-  // RESET DEFENCE STATE IF PLAYYER DEFENDED ROUND BEFORE
-
-  playerDefended === true && (selectedPlayer[0].defence -= 1000);
+  // RESET DEFENCE STATUS
+  document.querySelector(".btn-defend").disabled = false;
   playerDefended = false;
+  selectedPlayer[0].defence -= 1000;
   // ANIMATIONS
   getArena.classList.remove("shake"); //FIXME:
   document.getElementById("player-avatar").classList.remove("appear"); //FIXME:
@@ -228,7 +232,6 @@ const checkHealthStatus = () => {
     setTimeout(() => {
       getScoreResult.innerHTML = "Make your choice!";
     }, 2500);
-    // BATTLE SEQUENCE
   } else {
     // getScoreResult.innerHTML = `°º¤ø,¸¸,ø¤º°°º¤ø,¸,ø¤º°`;
     // getScoreResult.innerHTML = `(∩ ͡° ͜ʖ ͡°)⊃━☆ﾟ. *`;
