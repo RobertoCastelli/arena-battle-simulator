@@ -1,12 +1,11 @@
 /**
  * TODO:
- * calibrate HP MP etc
- * Button DEF SPECIAL ATK
  * add better rules section
  * add ending scene
  * add ending recap score
  * add animation effect on special attack
  * add animation on death
+ * add moster icons
  **/
 
 // ************
